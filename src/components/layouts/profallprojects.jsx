@@ -79,11 +79,11 @@ const Profallproject=()=>{
                     <div class="text-gray-800 px-3 py-2 rounded-md text-xl font-bold" style={{"textDecoration":"none"}}>All Projects</div>
                   </div>
                   {mobileMenu?(<div className='flex md:hidden'  onClick={()=>setMobileMenu(false)}>
-                            <span class="material-symbols-outlined text-white text-xl ml-12 mr-2">
+                            <span class="material-symbols-outlined text-black text-xl ml-12 mr-2">
                             cancel
                             </span></div>):(
                           <div className='flex md:hidden'  onClick={()=>setMobileMenu(true)}>
-                          <span class="material-symbols-outlined text-white text-xl ml-12 mr-2">
+                          <span class="material-symbols-outlined text-black text-xl ml-12 mr-2">
                           menu_open
                           </span>
                       </div>)}
