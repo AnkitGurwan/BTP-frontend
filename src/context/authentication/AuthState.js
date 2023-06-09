@@ -202,7 +202,10 @@ const AuthState = (props) => {
     }
 
       const getToken = async(code)=>{
-        console.log("step1")
+        console.log("step11")
+        // console.log(codeSub)
+        // const code=codeSub.substring(0, codeSub.indexOf("&"));
+        // console.log("code",code)
         const response = await fetch(`${url}/auth/microsoft/getToken`, {
             method: 'GET',
             headers: {
@@ -213,7 +216,7 @@ const AuthState = (props) => {
 
         const json=await response.json();
 
-        console.log(json.studInformation.givenName)
+        console.log(json)
         console.log(json.studInformation)
        localStorage.setItem('name',json.studInformation.givenName);
        localStorage.setItem('id',json.studInformation.mail);

@@ -30,7 +30,7 @@ const Createaccount=(req,res)=>{
     var userEmail=token.preferredName
 
     const [searchParams, setSearchParams] =useSearchParams();
-    const code=searchParams.get('code');  
+   
 
     const pId=students.filter((student)=>student.email===localStorage.getItem('id')).map((student,i)=>{return student._id});
 
@@ -67,6 +67,9 @@ const Createaccount=(req,res)=>{
   const roll=localStorage.getItem('roll');
  
   const getItem=async ()=>{
+      const code=searchParams.get('code');  
+      console.log("code",code);
+
       await allProjects();
       if(localStorage.getItem('name')===null && code)
       await getToken(code);
@@ -76,14 +79,11 @@ const Createaccount=(req,res)=>{
       funcAllowed();
   }
   
-
-
   {items.filter((project)=>project.intrestedPeople.map((emailcheck)=>{if(emailcheck===user){count=project._id;flag=1}}))}
   
       
   useEffect(()=>{
         getItem();
-        
         document.body.classList.add("disable-scrolling");
     },[]);    
 
@@ -98,23 +98,6 @@ const Createaccount=(req,res)=>{
 };
 
 
-var button = document.getElementById("partnerbtn");
-console.log("button",button)
-var modal = document.getElementById("myModal");
-
-if(button)
-button.addEventListener("click", function() {
-  modal.style.display = "block";
-  if(mobileMenu==true)
-  setMobileMenu(true);
-});
-
-if(window)
-window.addEventListener("click", function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-});
 
     return(
 
