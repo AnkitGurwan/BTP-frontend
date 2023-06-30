@@ -17,7 +17,7 @@ const ItemState=(props)=>{
     const [single,setSingle]=useState([]);
     const [partner,setPartner]=useState([]);
 
-    const url="https://btp-mech.onrender.com";
+    const url = process.env.REACT_APP_BACKEND_URL;
     const dispatch = useDispatch();
 
     

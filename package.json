@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.3",
     "capitalize": "^2.0.4",
+    "dotenv": "^16.3.1",
     "ejs": "^3.1.8",
     "lottie-react": "^2.4.0",
     "msal": "^1.4.17",

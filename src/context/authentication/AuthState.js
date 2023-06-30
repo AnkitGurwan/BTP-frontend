@@ -9,7 +9,7 @@ const AuthState = (props) => {
     const [token,setToken]=useState()
     const [interest,setInterest]=useState([])
 
-    const url = "https://btp-mech.onrender.com"
+    const url = process.env.REACT_APP_BACKEND_URL;
 
     const registerUser = async (name, email) => {
         const response = await fetch(`${url}/user/createuser`, {
@@ -196,7 +196,7 @@ const AuthState = (props) => {
 
 
       const studentDetails = async()=>{
-        window.location.href = "https://btp-mech.onrender.com/auth/microsoft";
+        window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/microsoft`;
         // window.location.href = "http://localhost:5000/auth/microsoft";
         
     }
