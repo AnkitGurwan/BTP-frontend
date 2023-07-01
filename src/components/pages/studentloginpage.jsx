@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import Header from '../layouts/header';
+import Header from '../layouts/interfacePageslHeader';
 import Studentlogin from '../layouts/studentlogin';
+
 
 function Accountpage(){
     return(

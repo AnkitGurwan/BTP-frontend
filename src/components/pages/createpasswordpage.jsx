@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../layouts/header';
+import Header from '../layouts/interfacePageslHeader';
 import Createpassword from '../layouts/createpassword';
 
 function Createpasswordpage(){

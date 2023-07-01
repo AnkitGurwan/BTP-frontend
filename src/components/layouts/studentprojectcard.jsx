@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 
 const Projectcard = (props) => {
-    // const [studentCount,setStudentCount]= useState(false);
     const {project}=props;
-    
     const idtoken=props.idtoken;
    
     return(
@@ -23,15 +21,12 @@ const Projectcard = (props) => {
                 <h6 class="card-title text-sm pb-1" style={{"text-align":"center"}}>{project.creation_time} </h6>
                 <div className='projectcardupdate'>
                 <Link className='projectcardlink1 mr-3 mt-1' to={project._id} state={{idtoken:idtoken}} >
-                    <span class="material-symbols-outlined">group_add
-                    </span>
+                    <span class="material-symbols-outlined">group_add</span>
                 </Link>
                 </div>                
             </div>
         </div>
     </div>
-    
-
     )}
 
-export default Projectcard
+export default Projectcard;

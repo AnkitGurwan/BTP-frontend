@@ -2,22 +2,16 @@ import React,{useContext,useEffect,useState} from 'react';
 import { Link,useParams } from 'react-router-dom';
 import ItemContext from '../../context/project/ItemContext';
 import AuthContext from '../../context/authentication/AuthContext';
-import Ownerprojectcard from './ownerprojectcard'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { upperCase } from 'lodash';
-var capitalize = require('capitalize')
-
 
 
 const Projectcard = () =>{
   
-    // const {project}=props;
     const {selectproject,deselectproject,ownerdetails,details,allProjects,createStudent} = useContext(ItemContext);
-    const {token,projectdetails} = useContext(AuthContext);
     const [itemData, setItemData] = useState({ name:"",partnerId:"",partnerRoll:"",isbanned:false })
-
     const items = useSelector(state => state.allProjects.allProjects);
     const [studentRegisteredCount,setStudentRegisteredCount]=useState(0);
     const [isRegistered,setIsRegistered]=useState(0);
@@ -25,39 +19,18 @@ const Projectcard = () =>{
     const params=useParams();
     const id=params.id;
 
-
-    const project=items.filter((project)=>project._id===id).map((project,i)=>{return project})
-
-   
-    // const Owner=(props)=>{ 
-    //   if(props)
-    //   return (<div style={{"padding-left":"15px"}}>
-    //       {props.individual} 
-    //   </div> 
-    //   )
-    // };
-
-    //get idtoken
-    // if(token)
-    // var user=token.preferredName
-
+    const project=items.filter((project)=>project._id===id).map((project,i)=>{return project});
 
 
     //check if user has registered for the project or not
    const user=localStorage.getItem('id');
 
-    // var studRegisteredCount=0;
-    // var isRegistered=0;
-    // if(project[0].intrestedPeople.length===2)setStudentRegisteredCount(2); 
+
     const checker =()=>{
-    project[0].intrestedPeople.map((emailcheck)=>{setStudentRegisteredCount(studentRegisteredCount+1);if(emailcheck===user)setIsRegistered(1);});
+      project[0].intrestedPeople.map((emailcheck)=>{setStudentRegisteredCount(studentRegisteredCount+1);if(emailcheck===user)setIsRegistered(1);});
     }
     
-     console.log("studRegisteredCount",studentRegisteredCount) 
-   
     const Store = [];  
-    console.log(isRegistered)
-    
 
     const getItem = async ()=>{
       await ownerdetails(id);
@@ -70,141 +43,130 @@ const Projectcard = () =>{
     },[]);
     
     Store.push(details);
+
     
-var modal = document.getElementById("myModal");
+    var modal = document.getElementById("myModal");
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+    // When the user clicks on the button, open the modal
+    if(btn){
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }}
 
-// When the user clicks on the button, open the modal
-if(btn){
-btn.onclick = function() {
-  modal.style.display = "block";
-}}
+    // When the user clicks on <span> (x), close the modal
+    if(span){
+    span.onclick = function() {
+      modal.style.display = "none";
+    }}
 
-// When the user clicks on <span> (x), close the modal
-if(span){
-span.onclick = function() {
-  modal.style.display = "none";
-}}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target === modal) {
-    modal.style.display = "none";
-  }
-}
-console.log(upperCase("jii"))
-
-const click=()=>{}
-
-const onChangeHandler = (e) => {
-  (setItemData({...itemData,[e.target.name]:e.target.value}));
-}
-
-const user1email=localStorage.getItem('id');
-const user1name=localStorage.getItem('name');
-const user1roll=localStorage.getItem('roll');
-const user2email=itemData.partnerId;
-const user2name=upperCase(itemData.name);
-const user2roll=itemData.partnerRoll;
-
-const submit = async (e)=>{
-      document.getElementById('myButton').classList.add('animate-pulse');
-      e.preventDefault();
-      document.getElementById("myBtn").style.width='140px'
-      
-      if(document.getElementById("myBtn").innerText==="Register"){
-      const x=await selectproject(id,user1email,user2email);
-
-      //check
-      if(x===200){
-        toast.success('Registered Successfully', {
-          position: toast.POSITION.TOP_CENTER
-      });
-        setIsRegistered(1);
-        document.getElementById("myBtn").className="projectcardlink2230a";
-        document.getElementById("myBtn").innerText="De-Register"; 
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target === modal) {
         modal.style.display = "none";
-        
       }
-      else if(x===403)
-        {
-          document.getElementById('myButton').classList.remove('animate-pulse');
-          toast.error('Given Id does not exist. Please ask your "Partner" to login to website once before Register.', {
-            position: toast.POSITION.TOP_CENTER
-        });
-        }
-        else if(x===350)
-        {
-          toast.error('Please Select A Partner.', {
-            position: toast.POSITION.TOP_CENTER
-        });
-        }
-      else if(x===400)
-        {
-          document.getElementById('myButton').classList.remove('animate-pulse');
-          toast.error('Already Registered', {
-            position: toast.POSITION.TOP_CENTER
-        });
-       }
+    }
 
-    else if(x===401)
-       {
-        document.getElementById('myButton').classList.remove('animate-pulse');
-        toast.error('You have already Registered for a project', {
-          position: toast.POSITION.TOP_CENTER
-      });
-       }
-      }
-        //already registered
-        else { 
-          const x=await deselectproject(id,user);
+
+    const click=()=>{}
+
+
+    const onChangeHandler = (e) => {
+      (setItemData({...itemData,[e.target.name]:e.target.value}));
+    }
+
+    const user1email=localStorage.getItem('id');
+    const user2email=itemData.partnerId;
+
+    const submit = async (e)=>{
+          document.getElementById('myButton').classList.add('animate-pulse');
+          e.preventDefault();
+          document.getElementById("myBtn").style.width='140px'
+          
+          if(document.getElementById("myBtn").innerText==="Register"){
+          const x=await selectproject(id,user1email,user2email);
+
           //check
           if(x===200){
-            document.getElementById('myButton').classList.remove('animate-pulse');
-            setIsRegistered(0);
-           
-            toast.success('De-Registered', {
+            toast.success('Registered Successfully', {
               position: toast.POSITION.TOP_CENTER
-          });          
-            document.getElementById("myBtn").className="projectcardlink223";
-            document.getElementById("myBtn").innerText="Register"; 
-            modal.style.display = "none"; 
-    }
-        if(x===400)
-         {
-          document.getElementById('myButton').classList.remove('animate-pulse');
-          toast.error('No Project Alloted Yet.', {
-            position: toast.POSITION.TOP_CENTER
-        });
-         }
-  
-        if(x===401)
-         {
-          document.getElementById('myButton').classList.remove('animate-pulse');
-          toast.error('This Project is not alloted to you.', {
-            position: toast.POSITION.TOP_CENTER
-        });
-         }
-          }   
-   }
+          });
+            setIsRegistered(1);
+            document.getElementById("myBtn").className="projectcardlink2230a";
+            document.getElementById("myBtn").innerText="De-Register"; 
+            modal.style.display = "none";
+            
+          }
+          else if(x===403)
+            {
+              document.getElementById('myButton').classList.remove('animate-pulse');
+              toast.error('Given Id does not exist. Please ask your "Partner" to login to website once before Register.', {
+                position: toast.POSITION.TOP_CENTER
+            });
+            }
+            else if(x===350)
+            {
+              toast.error('Please Select A Partner.', {
+                position: toast.POSITION.TOP_CENTER
+            });
+            }
+          else if(x===400)
+            {
+              document.getElementById('myButton').classList.remove('animate-pulse');
+              toast.error('Already Registered', {
+                position: toast.POSITION.TOP_CENTER
+            });
+          }
+
+        else if(x===401)
+          {
+            document.getElementById('myButton').classList.remove('animate-pulse');
+            toast.error('You have already Registered for a project', {
+              position: toast.POSITION.TOP_CENTER
+          });
+          }
+          }
+            //already registered
+            else { 
+              const x=await deselectproject(id,user);
+              //check
+              if(x===200){
+                document.getElementById('myButton').classList.remove('animate-pulse');
+                setIsRegistered(0);
+              
+                toast.success('De-Registered', {
+                  position: toast.POSITION.TOP_CENTER
+              });          
+                document.getElementById("myBtn").className="projectcardlink223";
+                document.getElementById("myBtn").innerText="Register"; 
+                modal.style.display = "none"; 
+        }
+            if(x===400)
+            {
+              document.getElementById('myButton').classList.remove('animate-pulse');
+              toast.error('No Project Alloted Yet.', {
+                position: toast.POSITION.TOP_CENTER
+            });
+            }
+      
+            if(x===401)
+            {
+              document.getElementById('myButton').classList.remove('animate-pulse');
+              toast.error('This Project is not alloted to you.', {
+                position: toast.POSITION.TOP_CENTER
+            });
+            }
+              }   
+      }
    
 
     return(
-    <div className='projectcardmaindivv1'>
-      {/* <span className="zindexdiv">Students Registered : 
-      {project[0].intrestedPeople.map((individual,i)=>{return (<Owner key={i}  individual={individual}></Owner> )})}
-      </span> */}
-      <br/>
-      
-      
-      {/* {Store.map((interestedStudent,i)=>{return (<Studentprojectcard key={i} detail={interestedStudent} />)})} */}
-        
-            <div class="px-6 py-3 rounded-lg border-4 bg-gray-100" style={{width:"90vw",height:"auto"}}>
+        <div className='projectcardmaindivv1'>
+          <div class="px-6 py-3 rounded-lg border-4 bg-gray-100" style={{width:"90vw",height:"auto"}}>
             <div class="card-body">
                 <h2 class="card-name flex items-center"><i class="fa-solid fa-book text-xl md:text-2xl" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>{project[0].title}</h2>
                 <h5 class="card-subtitle text-muted ">
@@ -239,22 +201,6 @@ const submit = async (e)=>{
                 <div class="modal-content3">
                   <span class="close pt-1 " style={{"justify-content":"start","height":"60px"}}>&times;</span>
                   <form class="w-100 mx-auto bg-white px-6 mb-3" onSubmit={submit}>
-                    {/* <div class="mb-4 ">
-                      <label class="block text-gray-600 font-bold mb-2 text-sm d-flex justify-content-start items-center" for="username">
-                      Partner Name
-                      </label>
-                      <input
-                        class="appearance-none border uppercase rounded text-sm w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-                        id="username"
-                        type="text"
-                        placeholder="Partner name"
-                        name="name"
-                        autoFocus
-                        onChange={onChangeHandler}
-                        value={itemData.name}
-                        required
-                      />
-                    </div> */}
                     
                     <div class="mb-12 ">
                       <label class="block text-gray-600 text-sm font-bold mb-2 d-flex justify-content-start items-center" for="confirm-password">
@@ -272,21 +218,6 @@ const submit = async (e)=>{
                         required
                       />
                     </div>
-                    {/* <div class="mb-8">
-                      <label class="block text-gray-600 text-sm font-bold mb-2 d-flex justify-content-start items-center" for="password">
-                      
-                      Partner Roll No:
-                      </label>
-                      <input
-                        class="appearance-none border text-sm rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-                        type="number"
-                        placeholder="Roll Number"
-                        name="partnerRoll"
-                        onChange={onChangeHandler}
-                        value={itemData.partnerRoll}
-                        required
-                      />
-                    </div> */}
                     
                     <div class="flex items-center justify-center">
                       <button id='myButton' class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-100" type="submit">
@@ -298,10 +229,10 @@ const submit = async (e)=>{
                 </div>
               </div>)}
             </div>
-            {/* modal */}
-                
+            {/* modal */}      
             
         </div>
     </div>
     )}
-export default Projectcard
+
+export default Projectcard;

@@ -1,27 +1,24 @@
-import react, { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
-import { setSpecificProjects, setAllProjects, delProject, addProject, editProject } from "../../Redux/allProjects/allprojectsSlice";
+import { setSpecificProjects, setAllProjects, delProject, addProject } from "../../Redux/allProjects/allprojectsSlice";
 import { setAllStudents } from "../../Redux/student/studentSlice"
 import ItemContext from "./ItemContext";
-import { addStudent } from "../../Redux/student/studentSlice";
 var _ = require('lodash');
 
 
 
 const ItemState=(props)=>{
-    // const {token} = useContext(AuthContext);
 
     const [items,setItems]=useState([]);
     const [itemsspecific,setItemsspecific]=useState([]);
     const [details,setDetails]=useState([]);
     const [single,setSingle]=useState([]);
-    const [partner,setPartner]=useState([]);
 
     const url = process.env.REACT_APP_BACKEND_URL;
     const dispatch = useDispatch();
 
     
-    const allProjects=async()=>{
+    const allProjects = async () => {
         const response = await fetch(`${url}/project/allprojects`, {
             method: 'GET',
             headers: {
@@ -37,8 +34,6 @@ const ItemState=(props)=>{
         setItems(json);
 
         dispatch(setAllProjects(json));
-
-       
         return response.status;
     };
 
@@ -65,12 +60,6 @@ const ItemState=(props)=>{
 
         console.log("status",response.status);
         return response.status;
-        // for(let i = 0; i < json.length; i++) {
-        //     console.log("10")
-        //     dispatch(setSpecificProjects(json[i]));
-        // }
-        //   console.log(json)
-        // console.log("useritem:- ",json)
     };
 
     const createProject = async (title,brief_abstract,co_supervisor,specialization) => {
@@ -87,11 +76,9 @@ const ItemState=(props)=>{
             const newItem={ title,brief_abstract,co_supervisor,specialization};
             dispatch(addProject(newItem));
             return response.status;
-            // setUser(user.concat(json));
     };
 
     const createStudent = async (userEmail,userName,userRoll) => {
-        console.log("step2")
         const response = await fetch(`${url}/project/newstudent`, {
             method: 'POST',
             headers: {
@@ -99,12 +86,10 @@ const ItemState=(props)=>{
             },
             body: JSON.stringify({ userEmail,userName,userRoll})
         });
-        console.log("step6")
         
         const json = await response.json(); 
-        console.log("json",json)
+        
         return response.status;
-        // setUser(user.concat(json));
 };
 
     const updateProject = async (title,brief_abstract,co_supervisor,specialization,id) => {
@@ -118,7 +103,6 @@ const ItemState=(props)=>{
             });
             
             const json = await response.json();
-            // setUser(user.concat(json));
     };
 
 
@@ -134,7 +118,6 @@ const ItemState=(props)=>{
             return response.status;
     };
 
-    
     const selectproject=async(id,user,email)=>{       
             const response = await fetch(`${url}/project/projectaddition/${id}/${user}/${email}`,  {
                 method: 'GET',
@@ -142,11 +125,6 @@ const ItemState=(props)=>{
                     'Content-Type': "application/json"
                 }
             })
-            console.log(response)
-            
-            // const stud={user,email};
-            // if(response.status===200)
-            // dispatch(addStudent(stud));
             return response.status
     };
 
@@ -173,13 +151,10 @@ const ItemState=(props)=>{
             const json=await response.json()
             setDetails(json)    
             return response.status;
-
-            // console.log("useritem:- ",json)
     };
 
 
     const getAllStudent=async()=>{     
-        console.log("step1")     
             const response = await fetch(`${url}/project/getallstudent`, {
                     method: 'GET',
                     headers: {
@@ -189,9 +164,8 @@ const ItemState=(props)=>{
                 console.log("step3")         
             const json=await response.json()
             dispatch(setAllStudents(json));
-            console.log("json",json)
+            
            return json;
-            // console.log("useritem:- ",json)
     };
 
     const getSingleProject=async(id)=>{

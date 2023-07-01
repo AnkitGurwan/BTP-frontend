@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../layouts/header';
+import Header from '../layouts/interfacePageslHeader';
 import Resetpasswordinterface from '../layouts/resetpasswordinterface';
 
 function Resetpasswordfunction(){

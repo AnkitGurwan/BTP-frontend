@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../layouts/header2';
+import Header from '../layouts/mainPagesHeader';
 import Createnewproject from '../layouts/createproject';
 
 function Mainlogin(){

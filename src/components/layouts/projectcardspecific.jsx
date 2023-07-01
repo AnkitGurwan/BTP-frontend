@@ -10,14 +10,11 @@ function Projectcard(props){
     const {deleteProject} = useContext(ItemContext);
     const navigate=useNavigate();
     const {user,ownerdetails} = useContext(AuthContext);
-    const [loading,setLoading]=useState(true);
     const params=useParams();
     const id=params.id;
 
     const getItem=async ()=>{
       const x = await ownerdetails(id);
-      console.log("x",x)
-      if(x===200)setLoading(false);
     }
     useEffect(()=>{
       getItem();
@@ -73,12 +70,7 @@ const click=()=>{}
       }
 
     return(
-    <div className='projectcardmaindivv'>
-       {/* {loading?(<div class="flex items-center justify-center h-screen">
-              <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
-              </div>
-            ): */}
-            
+        <div className='projectcardmaindivv'>    
             <div class="px-6 py-3 rounded-lg border-4 bg-gray-100" style={{"width":"auto","height":"auto"}}>
               <div class="card-body" style={{"display":"flex","flexDirection":"column","alignItems":"start"}}>
                 <h3 class="card-title pb-4"><i class="fa-solid fa-book text-md" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>{project.title}</h3>

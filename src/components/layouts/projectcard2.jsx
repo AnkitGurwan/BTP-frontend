@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 function Projectcard(props){
     const {project}=props;
@@ -18,8 +17,6 @@ function Projectcard(props){
                 </div>
             </div>
     </div>
-    
-
     )}
 
-export default Projectcard
+export default Projectcard;

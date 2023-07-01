@@ -54,7 +54,8 @@ const Specificprojectcard=()=> {
     
      return(
         <div className='studentspecificdiv'>
-          {allowed?<div>
+          {allowed?
+          <div>
             <header class="bg-gray-800 text-white py-2 flex items-center justify-center">
             <Link className='goback' to={`/studentallproject`}><i class="fa-sharp fa-solid fa-arrow-left fa-lg pl-2" /></Link>
               
@@ -72,17 +73,20 @@ const Specificprojectcard=()=> {
             
 
             <div className='allprojectsdiv2'>{items.filter((project)=>project._id===id).map((projects,i)=>{return (<Projectcardspecific key={i} project={projects} idtoken={idtoken}/>)})}</div>
-          </div>:<div class="centerrrr">
-          <div class="max-w-md bg-white rounded-lg shadow-md p-8">
-              <h1 class="text-3xl font-bold mb-4">404</h1>
-              <p class="text-lg text-gray-700 mb-6">Oops! The page you're looking for could not be accessed by you.</p>
-              <div class="bg-blue-500 text-center text-white text-xl font-bold py-2 px-4 rounded">
-                  You are not part of this Course.
-              </div>
+          </div>
+          :
+          <div class="centerrrr">
+            <div class="max-w-md bg-white rounded-lg shadow-md p-8">
+                <h1 class="text-3xl font-bold mb-4">404</h1>
+                <p class="text-lg text-gray-700 mb-6">Oops! The page you're looking for could not be accessed by you.</p>
+                <div class="bg-blue-500 text-center text-white text-xl font-bold py-2 px-4 rounded">
+                    You are not part of this Course.
+                </div>
+            </div>
         </div>
-    </div>}
+    }
         </div>
     )
 }
-export default Specificprojectcard
+export default Specificprojectcard;
 

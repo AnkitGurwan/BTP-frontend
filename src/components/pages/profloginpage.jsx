@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Header from '../layouts/header';
+import Header from '../layouts/interfacePageslHeader';
 import Proflogin from '../layouts/proflogin';
 
 const Mainlogin=()=>{
-    // const [tokenPresent,setTokenPresent] = useState(false);
-
     const Navigate = useNavigate();
     useEffect(()=>{
         if(localStorage.getItem('token'))
@@ -13,6 +11,7 @@ const Mainlogin=()=>{
             Navigate(`/owner`);
         }
     })
+
     return(
         <div>
             <Header />

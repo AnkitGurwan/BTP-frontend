@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link } from 'react-router-dom';
-import Header from '../layouts/header';
+import Header from '../layouts/interfacePageslHeader';
 import Forgotpassword from '../layouts/forgotpassword';
 import 'react-toastify/dist/ReactToastify.css';
 

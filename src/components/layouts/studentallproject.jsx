@@ -29,15 +29,14 @@ const Createaccount=(req,res)=>{
   if(token)
     var userEmail=token.preferredName
 
-    const [searchParams, setSearchParams] =useSearchParams();
-   
+  const [searchParams, setSearchParams] =useSearchParams();
+  const pId=students.filter((student)=>student.email===localStorage.getItem('id')).map((student,i)=>{return student._id});
 
-    const pId=students.filter((student)=>student.email===localStorage.getItem('id')).map((student,i)=>{return student._id});
-
-    var flag2=0;
-
+  var flag2=0;
   const partner=students.filter((student)=>student.partner===pId[0]).map((student,i)=>{flag2=1;return student});
 
+
+  //check student allowed or not to access the page
   const funcAllowed= () => {
     if(localStorage.getItem('roll'))
     {
@@ -60,22 +59,23 @@ const Createaccount=(req,res)=>{
     } 
   }
 
+
   var count="";
   var flag=0;
   const user=localStorage.getItem('id');
   const userName=localStorage.getItem('name');
-  const roll=localStorage.getItem('roll');
  
   const getItem=async ()=>{
       const code=searchParams.get('code');  
-      console.log("code",code);
 
       await allProjects();
       if(localStorage.getItem('name')===null && code)
-      await getToken(code);
+        await getToken(code);
+
       await getAllStudent(); 
       if(localStorage.getItem('name'))
-      await createStudent(localStorage.getItem('id'),localStorage.getItem('name'),localStorage.getItem('roll'));
+        await createStudent(localStorage.getItem('id'),localStorage.getItem('name'),localStorage.getItem('roll'));
+
       funcAllowed();
   }
   
@@ -98,9 +98,7 @@ const Createaccount=(req,res)=>{
 };
 
 
-
     return(
-
       <div> 
         {/* different header for student */}
       
@@ -108,21 +106,23 @@ const Createaccount=(req,res)=>{
             <div class="navbar-brand float-left">
               <img class="logoiitg" style={{"width":"3.6rem","marginBottom":"0.1rem","marginRight":"0.5rem"}} src="https://iitg.ac.in/mech/static/images/logo.png" alt='iitg logo'/>
             </div>     
-          <div className='footer2span1'>
-          
-            
-            <div className='footer2div1'>Indian Institute of Technology</div>
-            <div className='footer2div2'>Guwahati</div>
-          </div> 
+            <div className='footer2span1'>
+              <div className='footer2div1'>Indian Institute of Technology</div>
+              <div className='footer2div2'>Guwahati</div>
+            </div> 
 
-          <i className='footer2i' class="fa-solid fa-right-from-bracket"></i> 
-          <div className='footer2span2'><Link className='footer2a' to={'/'} onClick={newfunc} >LogOut</Link><h6 style={{"color":"white","textDecoration":"underline"}}>{name}</h6></div>
+            <i className='footer2i' class="fa-solid fa-right-from-bracket"></i> 
+            <div className='footer2span2'>
+              <Link className='footer2a' to={'/'} onClick={newfunc} >LogOut</Link>
+              <h6 style={{"color":"white","textDecoration":"underline"}}>{name}</h6>
+            </div>
         </div>
         
         {loading?(<div class="flex items-center justify-center h-screen">
           <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
-        </div>
-        ):<div>
+        </div>)
+        :
+        <div>
         {allowed?(<div className='studentallprojectdivmain'>
             <nav class="bg-gray-800 py-1 pr-0 md:pr-12">
                   <div class="max-w-7xl mx-auto px-0 lg:px-200">
@@ -188,96 +188,80 @@ const Createaccount=(req,res)=>{
                     <div class="container">
                     </div>
                 </div>
-
-                
-        {/* <div className='studentallprojectdiv1'>Kindly "Register" to the project you are interested in</div>
-          <div className='notregisdiv'><div className='notregisspan1'>Status : <div id='individual'       className='notregisspan2'>Not Registered</div></div>
-          </div>
-        <div class="input-group" className='searchdiv'>
-          <div className='registrationdiv'>
-            <div className='checkboxspan'><input type="checkbox" className='checkboxinput' style={{"margin":"15px"}}></input></div>
-              <div>My Registered Project</div>
-          </div>
-          <div className='searchdiv2'>
-          <input id="search-input" type="search"  class="form-control" name='search'placeholder="Search by Title name" value={search} onChange={detectChanges} /> 
-          </div>
-        </div> */}
             <div class="roundbox sidebox borderTopRound rounded-md mt-4 ml-4 p-1 md:p-2 md:ml-12 w-2/3 md:w-1/3 bg-gray-300" >
-            <div class="caption titled text-lg font-bold">→ Pay attention
-                <div class="top-links">
+              <div class="caption titled text-lg font-bold">→ Pay attention
+                  <div class="top-links">
+                  </div>
+              </div>
+              <div>
+                <div style={{"textAlign":"center"}}>
+                    <div class="contest-state-phase font-medium">Deadline to Register is 31 January, 2024 EOD</div><br/>
+                    
                 </div>
+              </div>
             </div>
-            <div>
-            <div style={{"textAlign":"center"}}>
-                <div class="contest-state-phase font-medium">Deadline to Register is 31 January, 2024 EOD</div><br/>
-                
-            </div>
-            </div>
-
-    </div>
     
-        <div className='grid grid-cols-2 gap-0 mt-16 mx-2 md:mx-6 md:grid-cols-3 lg:grid-cols-5'>{items.filter((projects)=>{ return search.toString().toLowerCase()==='' ?   projects : projects.title.toLowerCase().includes(search.toLocaleLowerCase())}).map( (project,i)=>{return <Projectcard key={i} project={project} idtoken={idtoken} />})}</div>
+          <div className='grid grid-cols-2 gap-0 mt-16 mx-2 md:mx-6 md:grid-cols-3 lg:grid-cols-5'>{items.filter((projects)=>{ return search.toString().toLowerCase()==='' ?   projects : projects.title.toLowerCase().includes(search.toLocaleLowerCase())}).map( (project,i)=>{return <Projectcard key={i} project={project} idtoken={idtoken} />})}</div>
 
-
-       
-
-        <div id='partner' class="container mx-auto pt-24 pb-12">
-        <div class="max-w-md mx-auto shadow-md rounded-md bg-gray-200">
-          <div class="p-4">
-            <h2 class="text-2xl font-bold mb-2">Partner Details</h2>
-            <hr class="my-4"/>
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label class="text-sm font-medium text-gray-700">Name:</label>
-                <p class="text-lg font-semibold font-mono">{flag2?partner[0].name:"N/A"}</p>
-              </div>
-              <div>
-                <label class="text-sm font-medium text-gray-700">Roll No:</label>
-                <p class="text-lg font-semibold font-mono">{flag2?partner[0].rollNum:"N/A"}</p>
-              </div>
-              <div>
-                <label class="text-sm font-medium text-gray-700">Email:</label>
-                <p class="text-lg font-semibold font-mono">{flag2?partner[0].email:"N/A"}</p>
-              </div>
-              <div>
-                <label class="text-sm font-medium text-gray-700">Job:</label>
-                <p class="text-lg font-semibold font-mono">BTech</p>
+            <div id='partner' class="container mx-auto pt-24 pb-12">
+            <div class="max-w-md mx-auto shadow-md rounded-md bg-gray-200">
+              <div class="p-4">
+                <h2 class="text-2xl font-bold mb-2">Partner Details</h2>
+                <hr class="my-4"/>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-sm font-medium text-gray-700">Name:</label>
+                    <p class="text-lg font-semibold font-mono">{flag2?partner[0].name:"N/A"}</p>
+                  </div>
+                  <div>
+                    <label class="text-sm font-medium text-gray-700">Roll No:</label>
+                    <p class="text-lg font-semibold font-mono">{flag2?partner[0].rollNum:"N/A"}</p>
+                  </div>
+                  <div>
+                    <label class="text-sm font-medium text-gray-700">Email:</label>
+                    <p class="text-lg font-semibold font-mono">{flag2?partner[0].email:"N/A"}</p>
+                  </div>
+                  <div>
+                    <label class="text-sm font-medium text-gray-700">Job:</label>
+                    <p class="text-lg font-semibold font-mono">BTech</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
+          <div id='course' class="col-sm-12 col-lg-4" style={{"margin":"auto","marginTop":"5vh"}}>
+          <div class="w3-white w3-text-grey card">
+            <div class="">
+              
+                  <img src="https://iitg.ac.in/mech/static/images/placeholdercourse.jpg" width="100%" height="300" alt="" class="" style={{"object-fit":"cover"}}/>
+              
+
+            </div>
+            <div  class="container text-dark font-weight-bold pt-2">
+              <h4>About this course: </h4>
+              <hr/>
+              <div class="text-center">
+              <ul style={{"fontWeight":"600"}}>
+              <li>Course Name: BTP Phase I</li>
+              <li>Course Code: ME 398</li>
+              <li>L-T-P-C : 0-0-3-3</li>
+              <li>Syllabus:  NaN </li>
+              <li>Course Type: Core course</li>
+              </ul>
+              <hr/>
+              </div>
+            </div>
+          </div><br/>
+
         </div>
-      </div>
 
-      <div id='course' class="col-sm-12 col-lg-4" style={{"margin":"auto","marginTop":"5vh"}}>
-      <div class="w3-white w3-text-grey card">
-        <div class="">
-          
-              <img src="https://iitg.ac.in/mech/static/images/placeholdercourse.jpg" width="100%" height="300" alt="" class="" style={{"object-fit":"cover"}}/>
-          
-
+          <div class="_feedback_container_1ob32_125 pl-4 md:pl-24 lg:pl-48 bg-gray-400" style={{"height":"15vh","width":"100vw","margin":"auto","display":"flex","alignItems":"center"}}><svg style={{"height":"30px","paddingRight":"10px"}} class="MuiSvgIcon-root _add__comment_1ob32_146" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 4c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4zm-2 13.17L18.83 16H4V4h16v13.17zM13 5h-2v4H7v2h4v4h2v-4h4V9h-4z"></path></svg>
+            <p class="_para__feedback_1ob32_130 text-xs md:text-sm lg:text-lg flex-wrap" style={{"marginBottom":"0.5vw","display":"flex","alignContent":"center"}} hover={{"textDecoration":"underline"}}>We value your opinion, please take a moment to fill out our   <Link className='px-1 ' to={`/feedback`}  style={{"textDecoration":"none"}}> feedback form </Link>   to help us improve.</p>
         </div>
-        <div  class="container text-dark font-weight-bold pt-2">
-          <h4>About this course: </h4>
-          <hr/>
-          <div class="text-center">
-          <ul style={{"fontWeight":"600"}}>
-          <li>Course Name: BTP Phase I</li>
-          <li>Course Code: ME 398</li>
-          <li>L-T-P-C : 0-0-3-3</li>
-          <li>Syllabus:  NaN </li>
-          <li>Course Type: Core course</li>
-          </ul>
-          <hr/>
-          </div>
-        </div>
-      </div><br/>
-
-    </div>
-
-        <div class="_feedback_container_1ob32_125 pl-4 md:pl-24 lg:pl-48 bg-gray-400" style={{"height":"15vh","width":"100vw","margin":"auto","display":"flex","alignItems":"center"}}><svg style={{"height":"30px","paddingRight":"10px"}} class="MuiSvgIcon-root _add__comment_1ob32_146" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 4c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4zm-2 13.17L18.83 16H4V4h16v13.17zM13 5h-2v4H7v2h4v4h2v-4h4V9h-4z"></path></svg>
-        <p class="_para__feedback_1ob32_130 text-xs md:text-sm lg:text-lg flex-wrap" style={{"marginBottom":"0.5vw","display":"flex","alignContent":"center"}} hover={{"textDecoration":"underline"}}>We value your opinion, please take a moment to fill out our   <Link className='px-1 ' to={`/feedback`}  style={{"textDecoration":"none"}}> feedback form </Link>   to help us improve.</p>
-       </div>
-       </div>):<div class="centerrrr">
+       </div>)
+       :
+       <div class="centerrrr">
           <div class="max-w-md bg-white rounded-lg shadow-md p-8">
               <h1 class="text-3xl font-bold mb-4">404</h1>
               <p class="text-lg text-gray-700 mb-6">Oops! The page you're looking for could not be accessed by you.</p>
@@ -285,16 +269,10 @@ const Createaccount=(req,res)=>{
                   You are not part of this Course.
               </div>
         </div>
-    </div>}
-
-          
+    </div>
+    }
         </div>}
-        
       </div>
     )
 }
 export default Createaccount;
-
-{/* <div class='flex space-between text-md items-center align-items-center'><div className='bg-gray-400 p-1 mx-1 rounded '>Partner's name:</div><div>{partner[0].name}</div></div>
-            <div className=' flex text-medium itms-center'><div className='px-0 bg-gray-400 p-1 mx-1 rounded '>Partner's email:</div><div>{partner[0].email}</div></div>
-            <div className='  flex text-medium'><div className='bg-gray-400 p-1 mx-1 rounded '>Partner's roll:</div><div>{partner[0].rollNum}</div></div> */}

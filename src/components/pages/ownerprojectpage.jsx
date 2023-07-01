@@ -1,10 +1,9 @@
 import React,{useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import Allprojects from '../layouts/ownerprojects';
-import Header from '../layouts/header2'
+import Header from '../layouts/mainPagesHeader'
 
 function ProjectPage(){
     const Navigate = useNavigate();
