@@ -9,7 +9,7 @@ const AuthState = (props) => {
     const [token,setToken]=useState()
     const [interest,setInterest]=useState([])
 
-    const url = "https://btp-frontend-chi.vercel.app"
+    const url = "https://btp-6ona.onrender.com"
 
     const registerUser = async (name, email) => {
         const response = await fetch(`${url}/user/createuser`, {
