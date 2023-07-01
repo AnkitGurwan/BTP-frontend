@@ -9,7 +9,7 @@ const AuthState = (props) => {
     const [token,setToken]=useState()
     const [interest,setInterest]=useState([])
 
-    const url = process.env.REACT_APP_BACKEND_URL;
+    const url = "https://btp-frontend-chi.vercel.app"
 
     const registerUser = async (name, email) => {
         const response = await fetch(`${url}/user/createuser`, {
