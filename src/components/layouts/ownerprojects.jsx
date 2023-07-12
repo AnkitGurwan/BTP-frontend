@@ -43,12 +43,15 @@ const Createaccount=()=>{
     var modal = document.getElementById("myModal");
 
     const submit = async (e)=>{
+        setLoading(true);
         e.preventDefault();
         setCount(count+1);
         const x=await createProject(itemData.title,itemData.abstract,itemData.cosupervisor,itemData.specialization,itemData.date,itemData.time,itemData.isbanned);
         
         if(x===200){
           setItemData({ title:"",abstract:"",cosupervisor:"",specialization:"",date:"",time:"",isbanned:false });
+          setLoading(false);
+          getItem();
   
         toast.success('Project created successfully', {
           position: toast.POSITION.TOP_CENTER
@@ -103,7 +106,6 @@ window.onclick = function(event) {
 }
 
     const download = async (e)=>{
-      console.log("kk")
       e.preventDefault();
       const email="riyehok530@razuz.com"
       // await downloadDetails(email);

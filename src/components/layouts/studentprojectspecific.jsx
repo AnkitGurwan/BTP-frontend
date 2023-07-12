@@ -65,10 +65,10 @@ const Specificprojectcard=()=> {
             </header>
             <br/>
             
-            <div className="flex">
-            <div className="w-3/4 md:w-2/3 mx-auto md:mx-0">
-              {Store.map((detail,i)=>{return (<Ownerprojectcard key={i} detail={detail} />)})}
-            </div>
+            <div className="flex mb-3">
+              <div className="w-3/4 md:w-2/3 mx-auto md:mx-0">
+                {Store.map((detail,i)=>{return (<Ownerprojectcard key={i} detail={detail} />)})}
+              </div>
             </div>
             
 
