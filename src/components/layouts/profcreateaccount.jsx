@@ -29,6 +29,7 @@ const Createaccount=()=>{
         });
         }
     }
+    
     const newfunc=async ()=>{
       navigate('/login');
     }

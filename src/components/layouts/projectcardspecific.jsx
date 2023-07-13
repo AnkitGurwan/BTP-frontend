@@ -86,15 +86,15 @@ const click=()=>{}
                 <h6 class="card-title pb-0 text-sm">Created at {project.creation_time} </h6>
                 <button id="myBtn" className='projectcardlink22' onclick={click}>Delete</button>
               </div>
-              </div>
+            </div>
             {/* modal */}
                 
-              <div id="myModal" class="modal">
-                <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <p className='modalp'>Are you sure you want to delete? <Link className='projectcardlink22a' onClick={clickHandler}>Delete</Link></p>
-                </div>
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <p className='modalp'>Are you sure you want to delete? <Link className='projectcardlink22a' onClick={clickHandler}>Delete</Link></p>
               </div>
+            </div>
             
       </div>
 

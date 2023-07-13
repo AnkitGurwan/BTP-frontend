@@ -9,7 +9,7 @@ function ProjectPage(){
     const Navigate = useNavigate();
 
     useEffect(()=>{
-        if(!localStorage.getItem('token')){
+        if(!localStorage.getItem('btpToken')){
          
           Navigate("/login");
           (toast.error('Please login to access', {

@@ -11,7 +11,7 @@ const Createaccount=(req,res)=>{
   const {allProjects,logout,getAllStudent,createStudent} = useContext(ItemContext);
   const {getToken} = useContext(AuthContext);
   const students = useSelector(state => state.student.allStudents);
-  const location=useLocation();
+  const location = useLocation();
   const [mobileMenu,setMobileMenu]=useState(false);
   const [allowed,setAllowed]=useState(false);
   const [loading,setLoading]=useState(true);
@@ -20,17 +20,13 @@ const Createaccount=(req,res)=>{
   var items = useSelector(state => state.allProjects.allProjects);
   
   if(location.state)
-    var idtoken=location.state.token
+    var idtoken=location.state.token;
+    
   if(idtoken)
     var name=location.state.token.preferredName
 
-  const token=localStorage.getItem('msal.idtoken')
-
-  if(token)
-    var userEmail=token.preferredName
-
   const [searchParams, setSearchParams] =useSearchParams();
-  const pId=students.filter((student)=>student.email===localStorage.getItem('id')).map((student,i)=>{return student._id});
+  const pId=students.filter((student)=>student.email === localStorage.getItem('studId')).map((student,i)=>{return student._id});
 
   var flag2=0;
   const partner=students.filter((student)=>student.partner===pId[0]).map((student,i)=>{flag2=1;return student});
@@ -38,9 +34,9 @@ const Createaccount=(req,res)=>{
 
   //check student allowed or not to access the page
   const funcAllowed= () => {
-    if(localStorage.getItem('roll'))
+    if(localStorage.getItem('studRoll'))
     {
-      if(210103000<localStorage.getItem('roll') && localStorage.getItem('roll')<210103140){
+      if(210103000<localStorage.getItem('studRoll') && localStorage.getItem('studRoll')<210103140){
           setAllowed(true);
           setLoading(false);
       }
@@ -63,18 +59,18 @@ const Createaccount=(req,res)=>{
   var count="";
   var flag=0;
   const user=localStorage.getItem('id');
-  const userName=localStorage.getItem('name');
+  const userName=localStorage.getItem('studName');
  
   const getItem=async ()=>{
       const code=searchParams.get('code');  
 
       await allProjects();
-      if(localStorage.getItem('name')===null && code)
+      if(localStorage.getItem('studName') === null && code)
         await getToken(code);
 
       await getAllStudent(); 
-      if(localStorage.getItem('name'))
-        await createStudent(localStorage.getItem('id'),localStorage.getItem('name'),localStorage.getItem('roll'));
+      if(localStorage.getItem('studName'))
+        await createStudent(localStorage.getItem('id'),localStorage.getItem('studName'),localStorage.getItem('studRoll'));
 
       funcAllowed();
   }
@@ -93,7 +89,7 @@ const Createaccount=(req,res)=>{
   }
    
   const newfunc=async ()=>{
-    localStorage.clear('name','id','roll','job');
+    localStorage.clear('studName','studId','studRoll','studJob');
     await logout();
 };
 

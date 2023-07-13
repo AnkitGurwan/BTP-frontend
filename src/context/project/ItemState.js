@@ -23,7 +23,7 @@ const ItemState=(props)=>{
             method: 'GET',
             headers: {
                 'Content-Type': "application/json",
-                'auth-token':localStorage.getItem('token')
+                'auth-token':localStorage.getItem('btpToken')
             }
         });
         const json=await response.json();
@@ -42,7 +42,7 @@ const ItemState=(props)=>{
             method: 'GET',
             headers: {
                 'Content-Type': "application/json",
-                'auth-token':localStorage.getItem('token')
+                'auth-token': localStorage.getItem('btpToken')
             }
         })
 
@@ -67,7 +67,7 @@ const ItemState=(props)=>{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'auth-token':localStorage.getItem('token')
+                    'auth-token':localStorage.getItem('btpToken')
                 },
                 body: JSON.stringify({ title,brief_abstract,co_supervisor,specialization})
             });
@@ -97,7 +97,7 @@ const ItemState=(props)=>{
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
-                    'auth-token':localStorage.getItem('token')
+                    'auth-token':localStorage.getItem('btpToken')
                 },
                 body: JSON.stringify({ title,brief_abstract,co_supervisor,specialization})
             });
@@ -111,7 +111,7 @@ const ItemState=(props)=>{
                 method: 'DELETE',
                 headers: {
                     'Content-Type': "application/json",
-                    'auth-token':localStorage.getItem('token')
+                    'auth-token':localStorage.getItem('btpToken')
                 }
             });
             dispatch(delProject(id));
@@ -145,7 +145,7 @@ const ItemState=(props)=>{
                     method: 'GET',
                     headers: {
                         'Content-Type': "application/json",
-                        'auth-token':localStorage.getItem('token')
+                        'auth-token':localStorage.getItem('btpToken')
                     }
                 })            
             const json=await response.json()

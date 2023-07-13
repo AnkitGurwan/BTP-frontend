@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function Footer2(){
 
     const newfunc=()=>{
-            localStorage.clear('token');
+            localStorage.clear('btpToken');
             toast.success('Logged out successfully', {
                 position: toast.POSITION.TOP_CENTER
             });

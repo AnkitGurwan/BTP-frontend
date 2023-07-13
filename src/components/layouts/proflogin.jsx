@@ -65,11 +65,11 @@ const Body2 = ()=>{
                   
                   <form onSubmit={loginSubmitHandler} >
                     <div class="form-outline mb-4" className='proflogininput' >
-                      <input type="email" id="loginName" class="form-control"  placeholder="Email (i.e. 123@gmail.com)" autoFocus name="email" value={user.email} onChange={onChangeHandler}/>
+                      <input type="email" id="loginName" class="form-control"  placeholder="Email (i.e. 123@gmail.com)" required autoFocus name="email" value={user.email} onChange={onChangeHandler}/>
                     </div>
           
                     <div class="form-outline mb-4" className='proflogininput' >
-                      <input type="password" id="loginPassword" class="form-control" placeholder="Password"    name="password" value={user.password} onChange={onChangeHandler}/>
+                      <input type="password" id="loginPassword" class="form-control" placeholder="Password" required   name="password" value={user.password} onChange={onChangeHandler}/>
                     </div>
 
                     <div class="row mb-4" className='profloginlink'>

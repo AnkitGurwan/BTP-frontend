@@ -23,9 +23,9 @@ const Specificprojectcard=()=> {
     const items = useSelector(state => state.allProjects.allProjects);
 
     const funcAllowed = ()=>{
-      if(localStorage.getItem('roll'))
+      if(localStorage.getItem('studRoll'))
       {
-        if(210103000<localStorage.getItem('roll') && localStorage.getItem('roll')<210103140){
+        if(210103000<localStorage.getItem('studRoll') && localStorage.getItem('studRoll')<210103140){
             setAllowed(true);
         }
         else setAllowed(false);

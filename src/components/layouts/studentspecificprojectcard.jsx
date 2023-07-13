@@ -23,7 +23,7 @@ const Projectcard = () =>{
 
 
     //check if user has registered for the project or not
-   const user=localStorage.getItem('id');
+   const user=localStorage.getItem('studId');
 
 
     const checker =()=>{
@@ -79,7 +79,7 @@ const Projectcard = () =>{
       (setItemData({...itemData,[e.target.name]:e.target.value}));
     }
 
-    const user1email=localStorage.getItem('id');
+    const user1email=localStorage.getItem('studId');
     const user2email=itemData.partnerId;
 
     const submit = async (e)=>{

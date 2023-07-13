@@ -11,7 +11,7 @@ const Specificprojectcard=()=> {
     const params=useParams();
     const id=params.id;
 
-    const getItem=async ()=>{        
+    const getItem = async () => {        
       Projectspecific(); 
       };
       useEffect(()=>{
@@ -29,4 +29,4 @@ const Specificprojectcard=()=> {
       </div>
     ) 
 };
-export default Specificprojectcard
+export default Specificprojectcard;

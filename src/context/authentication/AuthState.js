@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const AuthState = (props) => {
     const [user,setUser]=useState([])
-    const [token,setToken]=useState()
+    const [btpToken,setBtpToken]=useState()
     const [interest,setInterest]=useState([])
 
     const url = "https://btp-6ona.onrender.com"
@@ -34,7 +34,7 @@ const AuthState = (props) => {
         });
         
         const json = await response.json();
-        localStorage.setItem('token', json.token);
+        localStorage.setItem('btpToken', json.token);
         return response.status;
     }
 
@@ -94,7 +94,7 @@ const AuthState = (props) => {
             method: 'GET',
             headers: {
                 'Content-Type': "application/json",
-                'auth-token':localStorage.getItem('token')
+                'auth-token':localStorage.getItem('btpToken')
             }
         })
 
@@ -109,7 +109,7 @@ const AuthState = (props) => {
             method: 'GET',
             headers: {
                 'Content-Type': "application/json",
-                'auth-token':localStorage.getItem('token')
+                'auth-token':localStorage.getItem('btpToken')
             }
         })
 
@@ -146,14 +146,14 @@ const AuthState = (props) => {
         });
 
         const json=await response.json();
-        localStorage.setItem('name',json.studInformation.givenName);
-        localStorage.setItem('id',json.studInformation.mail);
-        localStorage.setItem('roll',json.studInformation.surname);
-        localStorage.setItem('job',json.studInformation.jobTitle);
+        localStorage.setItem('studName',json.studInformation.givenName);
+        localStorage.setItem('studId',json.studInformation.mail);
+        localStorage.setItem('studRoll',json.studInformation.surname);
+        localStorage.setItem('studJob',json.studInformation.jobTitle);
     }
     
 
-    return (<AuthContext.Provider value={{registerUser,getToken,loginUser,confirmEmail,resetPassword,resetpasswordconfirmEmail,loginStudent,ownerdetails,user,token,downloadDetails,interest,projectdetails,studentDetails}}>
+    return (<AuthContext.Provider value={{registerUser,getToken,loginUser,confirmEmail,resetPassword,resetpasswordconfirmEmail,loginStudent,ownerdetails,user,btpToken,downloadDetails,interest,projectdetails,studentDetails}}>
         {props.children}
     </AuthContext.Provider>
     )

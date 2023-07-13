@@ -6,7 +6,7 @@ import Proflogin from '../layouts/proflogin';
 const Mainlogin=()=>{
     const Navigate = useNavigate();
     useEffect(()=>{
-        if(localStorage.getItem('token'))
+        if(localStorage.getItem('btpToken'))
         {
             Navigate(`/owner`);
         }
