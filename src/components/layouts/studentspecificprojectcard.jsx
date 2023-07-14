@@ -200,7 +200,7 @@ const Projectcard = () =>{
             <div id="myModal" class="modal2">
                 <div class="modal-content3">
                   <span class="close pt-1 " style={{"justify-content":"start","height":"60px"}}>&times;</span>
-                  <form class="w-100 mx-auto bg-white px-6 mb-3" onSubmit={submit}>
+                  <form class="w-100 mx-auto bg-white px-2 md:px-6 mb-3" onSubmit={submit}>
                     
                     <div class="mb-12 ">
                       <label class="block text-gray-600 text-sm font-bold mb-2 d-flex justify-content-start items-center" for="confirm-password">

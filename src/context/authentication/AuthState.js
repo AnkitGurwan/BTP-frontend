@@ -5,13 +5,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const AuthState = (props) => {
     const [user,setUser]=useState([])
-    const [btpToken,setBtpToken]=useState()
+    // const [btpToken,setBtpToken]=useState()
     const [interest,setInterest]=useState([])
 
-    const url = "https://btp-6ona.onrender.com"
-
+    const url = process.env.REACT_APP_BACKEND_URL;
 
     const registerUser = async (name, email) => {
+        
         const response = await fetch(`${url}/user/createuser`, {
             method: 'POST',
             headers: {
@@ -48,7 +48,6 @@ const AuthState = (props) => {
         });
         
         const json = await response.json();
-        console.log(json);
     }
 
     const resetPassword = async (email) => {
@@ -153,7 +152,7 @@ const AuthState = (props) => {
     }
     
 
-    return (<AuthContext.Provider value={{registerUser,getToken,loginUser,confirmEmail,resetPassword,resetpasswordconfirmEmail,loginStudent,ownerdetails,user,btpToken,downloadDetails,interest,projectdetails,studentDetails}}>
+    return (<AuthContext.Provider value={{registerUser,getToken,loginUser,confirmEmail,resetPassword,resetpasswordconfirmEmail,loginStudent,ownerdetails,user,downloadDetails,interest,projectdetails,studentDetails}}>
         {props.children}
     </AuthContext.Provider>
     )

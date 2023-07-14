@@ -57,8 +57,6 @@ const ItemState=(props)=>{
 
         dispatch(setSpecificProjects(json));
         
-
-        console.log("status",response.status);
         return response.status;
     };
 
@@ -161,7 +159,6 @@ const ItemState=(props)=>{
                         'Content-Type': "application/json"
                     }
                 })   
-                console.log("step3")         
             const json=await response.json()
             dispatch(setAllStudents(json));
             
@@ -175,7 +172,7 @@ const ItemState=(props)=>{
     const logout=async()=>{
         
         const tenantID = process.env.MICROSOFT_GRAPH_TENANT_ID;
-        const logoutEndpoint = `https://login.microsoftonline.com/${tenantID}/oauth2/v2.0/logout?post_logout_redirect_uri=http://localhost:3000/`;
+        const logoutEndpoint = `https://login.microsoftonline.com/${tenantID}/oauth2/v2.0/logout?post_logout_redirect_uri=https://btp-frontend-chi.vercel.app/`;
         window.location.href = logoutEndpoint;
     }
     

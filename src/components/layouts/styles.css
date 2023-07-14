@@ -1423,12 +1423,15 @@ and (max-device-width : 699px)
     }
     .modal-content {
         background-color: #fefefe;
-        margin: 40% auto; /* 15% from the top and centered */
+        margin: 40% auto; /* 20% from the top and centered */
         padding:5px 10px 5px 20px;
         border: 1px solid #888;
         width: 90%; /* Could be more or less, depending on screen size */
         font-size: large;
       }
+    .modal-content3 {
+        width: 90vw; /* Could be more or less, depending on screen size */
+    }
     
 }
   

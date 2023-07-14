@@ -34,7 +34,7 @@ const Createaccount=()=>{
       setSearch(e.target.value);   
     };
 
-    const [itemData, setItemData] = useState({ title:"",abstract:"",cosupervisor:"",specialization:"",date:"",time:"",isbanned:false })
+    const [itemData, setItemData] = useState({ title:"",abstract:"",cosupervisor:"",specialization:"",date:"",time:"",isbanned:false });
   
     const onChangeHandler = (e) => {
       (setItemData({...itemData,[e.target.name]:e.target.value}));
@@ -59,58 +59,41 @@ const Createaccount=()=>{
         modal.style.display = "none";
     }
     }
-    
-    // const openNav=()=> {
-    //   document.getElementById("sidenavbar").style.top="12vh"
-    //   document.getElementById("sidenavbar").style.width="20vw"
-    //   document.getElementById("sidenavbar").style.height="88vh"
-    //   document.getElementById("text-left").style.left = "20vw";
-    //   document.getElementById("text-left").style.width = "80vw";
-    // }
-    
-    // const closeNav=()=> {
-    //   document.getElementById("sidenavbar").style.top="0"
-    //   document.getElementById("sidenavbar").style.width = "0vw";
-    //   document.getElementById("sidenavbar").style.height="0vh"
-    //   document.getElementById("text-left").style.left = "0vw";
-    //   document.getElementById("text-left").style.width = "100vw";
-    // }
-
 
         
-var modal = document.getElementById("myModal");
-// Get the button that opens the modal
+    var modal = document.getElementById("myModal");
+    // Get the button that opens the modal
 
-var btn = document.getElementById("myBtn");
+    var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on the button, open the modal
-if(btn){
-btn.onclick = function() {
-  modal.style.display = "block";
-}}
+    // When the user clicks on the button, open the modal
+    if(btn){
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }}
 
-// When the user clicks on <span> (x), close the modal
-if(span){
-span.onclick = function() {
-  modal.style.display = "none";
-}}
+    // When the user clicks on <span> (x), close the modal
+    if(span){
+    span.onclick = function() {
+      modal.style.display = "none";
+    }}
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
 
     const download = async (e)=>{
       e.preventDefault();
-      const email="riyehok530@razuz.com"
+      const token = localStorage.getItem('btpToken');
       // await downloadDetails(email);
       window.open(
-        'https://btp-mech.onrender.com/project/intrestedpeople/riyehok530@razuz.com',
+        `${process.env.REACT_APP_BACKEND_URL}/project/intrestedpeople/${token}`,
         '_blank' // <- This is what makes it open in a new window.
         );
       // window.location.href="http://localhost:5000/project/riyehok530@razuz.com"

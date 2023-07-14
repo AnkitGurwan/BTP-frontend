@@ -18,12 +18,6 @@ const Createaccount=(req,res)=>{
   const Navigate = useNavigate();
 
   var items = useSelector(state => state.allProjects.allProjects);
-  
-  if(location.state)
-    var idtoken=location.state.token;
-    
-  if(idtoken)
-    var name=location.state.token.preferredName
 
   const [searchParams, setSearchParams] =useSearchParams();
   const pId=students.filter((student)=>student.email === localStorage.getItem('studId')).map((student,i)=>{return student._id});
@@ -36,7 +30,7 @@ const Createaccount=(req,res)=>{
   const funcAllowed= () => {
     if(localStorage.getItem('studRoll'))
     {
-      if(210103000<localStorage.getItem('studRoll') && localStorage.getItem('studRoll')<210103140){
+      if(210103000 < localStorage.getItem('studRoll') && localStorage.getItem('studRoll') < 210103140){
           setAllowed(true);
           setLoading(false);
       }
@@ -58,7 +52,7 @@ const Createaccount=(req,res)=>{
 
   var count="";
   var flag=0;
-  const user=localStorage.getItem('id');
+  const userId=localStorage.getItem('studId');
   const userName=localStorage.getItem('studName');
  
   const getItem=async ()=>{
@@ -70,12 +64,12 @@ const Createaccount=(req,res)=>{
 
       await getAllStudent(); 
       if(localStorage.getItem('studName'))
-        await createStudent(localStorage.getItem('id'),localStorage.getItem('studName'),localStorage.getItem('studRoll'));
+        await createStudent(localStorage.getItem('studId'),localStorage.getItem('studName'),localStorage.getItem('studRoll'));
 
       funcAllowed();
   }
   
-  {items.filter((project)=>project.intrestedPeople.map((emailcheck)=>{if(emailcheck===user){count=project._id;flag=1}}))}
+  {items.filter((project)=>project.intrestedPeople.map((emailcheck)=>{if(emailcheck===userId){count=project._id;flag=1}}))}
   
       
   useEffect(()=>{
@@ -110,7 +104,7 @@ const Createaccount=(req,res)=>{
             <i className='footer2i' class="fa-solid fa-right-from-bracket"></i> 
             <div className='footer2span2'>
               <Link className='footer2a' to={'/'} onClick={newfunc} >LogOut</Link>
-              <h6 style={{"color":"white","textDecoration":"underline"}}>{name}</h6>
+              
             </div>
         </div>
         
@@ -140,12 +134,12 @@ const Createaccount=(req,res)=>{
                       {flag===0?(
                         <div className='hidden md:flex'>
                         <div class="text-gray-500 px-3 py-2 rounded-md text-xl font-x-large" style={{"textDecoration":"none"}}><i class="fa-solid fa-book text-md" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>My Project</div>
-                        <div class="text-gray-500  px-3 py-2 rounded-md text-xl font-x-large" style={{"textDecoration":"none"}}><i class="fa-solid fa-user text-md" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>My Partner</div>
+                        <div class="text-gray-500  px-3 py-2 rounded-md text-xl font-x-large" style={{"textDecoration":"none"}}><i class="fa-solid fa-userId text-md" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>My Partner</div>
                         </div>
                       ):(
                         <div className='hidden md:flex'>
                           <a href={`/studentallproject/${count}`} class="text-gray-400 hover:text-white px-3 py-2 rounded-md text-lg font-x-large" style={{"textDecoration":"none"}}><i class="fa-solid fa-book text-md" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>My Project</a>
-                          <a href='#partner' class="text-gray-400 hover:text-white px-3 no-underline py-2 rounded-md text-lg font-x-large z-10" style={{"textDecoration":"none","cursor":"pointer"}}><i class="fa-solid fa-user text-md" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>My Partner</a>
+                          <a href='#partner' class="text-gray-400 hover:text-white px-3 no-underline py-2 rounded-md text-lg font-x-large z-10" style={{"textDecoration":"none","cursor":"pointer"}}><i class="fa-solid fa-userId text-md" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>My Partner</a>
                       </div>
                       )}
                       <a href='#course' class="hidden md:flex text-gray-400 hover:text-white px-2 md:px-3 py-2 rounded-md text-xs  md:text-lg " style={{"textDecoration":"none" }}>About Course</a>
@@ -197,29 +191,29 @@ const Createaccount=(req,res)=>{
               </div>
             </div>
     
-          <div className='grid grid-cols-2 gap-0 mt-16 mx-2 md:mx-6 md:grid-cols-3 lg:grid-cols-5'>{items.filter((projects)=>{ return search.toString().toLowerCase()==='' ?   projects : projects.title.toLowerCase().includes(search.toLocaleLowerCase())}).map( (project,i)=>{return <Projectcard key={i} project={project} idtoken={idtoken} />})}</div>
+          <div className='grid grid-cols-2 gap-0 mt-16 mx-2 md:mx-6 md:grid-cols-3 lg:grid-cols-5'>{items.filter((projects)=>{ return search.toString().toLowerCase()==='' ?   projects : projects.title.toLowerCase().includes(search.toLocaleLowerCase())}).map( (project,i)=>{return <Projectcard key={i} project={project} />})}</div>
 
             <div id='partner' class="container mx-auto pt-24 pb-12">
             <div class="max-w-md mx-auto shadow-md rounded-md bg-gray-200">
               <div class="p-4">
                 <h2 class="text-2xl font-bold mb-2">Partner Details</h2>
                 <hr class="my-4"/>
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-x-20 md:gap-x-2 gap-y-2">
                   <div>
                     <label class="text-sm font-medium text-gray-700">Name:</label>
-                    <p class="text-lg font-semibold font-mono">{flag2?partner[0].name:"N/A"}</p>
+                    <p class="text-lg  font-semibold font-mono tracking-tighter md:tracking-tight">{flag2?partner[0].name:"N/A"}</p>
                   </div>
                   <div>
-                    <label class="text-sm font-medium text-gray-700">Roll No:</label>
-                    <p class="text-lg font-semibold font-mono">{flag2?partner[0].rollNum:"N/A"}</p>
+                    <label class="text-sm font-medium text-gray-700 pl-6 md:pl-12">Roll No:</label>
+                    <p class="text-lg font-semibold font-mono pl-6 md:pl-12">{flag2?partner[0].rollNum:"N/A"}</p>
                   </div>
                   <div>
-                    <label class="text-sm font-medium text-gray-700">Email:</label>
-                    <p class="text-lg font-semibold font-mono">{flag2?partner[0].email:"N/A"}</p>
+                    <label class="text-sm font-medium text-gray-700 ">Email:</label>
+                    <p class="text-lg font-semibold font-mono tracking-tighter md:tracking-tight">{flag2?partner[0].email:"N/A"}</p>
                   </div>
                   <div>
-                    <label class="text-sm font-medium text-gray-700">Job:</label>
-                    <p class="text-lg font-semibold font-mono">BTech</p>
+                    <label class="text-sm font-medium text-gray-700 pl-6 md:pl-12">Job:</label>
+                    <p class="text-lg font-semibold font-mono pl-6 md:pl-12 tracking-tighter md:tracking-tight">BTech</p>
                   </div>
                 </div>
               </div>
