@@ -15,21 +15,13 @@ const Feedbackpage = () => {
 
     const submit = async (e)=>{
         e.preventDefault();   
-        const x = sendFeedback(feedback.email,feedback.header,feedback.body);
+        sendFeedback(feedback.email,feedback.header,feedback.body);
         
-
-        if(x===200)
-        {
-            toast.success('Feedback sent successfully', {
-                position: toast.POSITION.TOP_CENTER
-            });
-            navigate('/studentallproject');
-        }
-
-        else
-        toast.success('Please login again and try to send', {
+        toast.success('Feedback sent successfully', {
             position: toast.POSITION.TOP_CENTER
         });
+        navigate('/studentallproject');
+
     }
 
     return(
