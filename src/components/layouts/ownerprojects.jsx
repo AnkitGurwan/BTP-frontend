@@ -1,5 +1,5 @@
 import React,{useContext,useEffect,useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ItemContext from '../../context/project/ItemContext';
 import Projectcard from './projectcard';
 import { toast } from 'react-toastify';
@@ -13,6 +13,7 @@ const Createaccount=()=>{
     const {downloadDetails} = useContext(AuthContext);
     const [mobileMenu,setMobileMenu]=useState(false); 
     const [loading,setLoading]=useState(true);
+    const Navigate = useNavigate();
     
     let [count,setCount]=useState(0);
 
@@ -23,6 +24,14 @@ const Createaccount=()=>{
     const getItem=async ()=>{        
         const x=await Projectspecific(); 
         if(x===200)setLoading(false);
+        else 
+        {
+          localStorage.clear('btpToken');
+          toast.error('Your session has expired, please login again.', {
+            position: toast.POSITION.TOP_CENTER
+        });
+        Navigate(`/login`);
+        }
     };
     useEffect(()=>{
         getItem();

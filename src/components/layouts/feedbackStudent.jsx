@@ -27,7 +27,7 @@ const Feedbackpage = () => {
         }
 
         else
-        toast.success('Please login again and try to send', {
+        toast.error('Please login again and try to send', {
             position: toast.POSITION.TOP_CENTER
         });
     }
