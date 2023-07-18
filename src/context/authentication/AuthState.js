@@ -88,6 +88,18 @@ const AuthState = (props) => {
         return (response.status);
     }
 
+    const sendFeedback = async (email, header,body)=>{
+        const response = await fetch(`${url}/project/feedback`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, header,body }),
+        });
+        
+        return (response.status);
+    }
+
     const ownerdetails = async(id)=>{
         const response = await fetch(`${url}/project/ownerdetails/${id}`, {
             method: 'GET',
@@ -152,7 +164,7 @@ const AuthState = (props) => {
     }
     
 
-    return (<AuthContext.Provider value={{registerUser,getToken,loginUser,confirmEmail,resetPassword,resetpasswordconfirmEmail,loginStudent,ownerdetails,user,downloadDetails,interest,projectdetails,studentDetails}}>
+    return (<AuthContext.Provider value={{registerUser,sendFeedback,getToken,loginUser,confirmEmail,resetPassword,resetpasswordconfirmEmail,loginStudent,ownerdetails,user,downloadDetails,interest,projectdetails,studentDetails}}>
         {props.children}
     </AuthContext.Provider>
     )

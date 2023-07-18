@@ -37,6 +37,13 @@ const Createpassword = () => {
             });
             return;
         }
+        if(user.password.length < 8)
+        {
+            toast.error('Password must have atleast 8 characters.', {
+                position: toast.POSITION.TOP_CENTER
+            });
+            return;
+        }
         e.preventDefault();
         confirmEmail(user.password,token);
         navigate('/login');

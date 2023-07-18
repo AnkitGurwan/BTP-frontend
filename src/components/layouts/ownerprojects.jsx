@@ -176,7 +176,7 @@ const Createaccount=()=>{
 
 
             <div class="_feedback_container_1ob32_125 pl-4 md:pl-24 lg:pl-48" style={{"height":"15vh","width":"100vw","margin":"auto","display":"flex","alignItems":"center","backgroundColor":"whitesmoke"}}><svg style={{"height":"30px","paddingRight":"10px"}} class="MuiSvgIcon-root _add__comment_1ob32_146" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 4c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4zm-2 13.17L18.83 16H4V4h16v13.17zM13 5h-2v4H7v2h4v4h2v-4h4V9h-4z"></path></svg>
-        <p class="_para__feedback_1ob32_130 text-xs md:text-sm lg:text-lg flex-wrap" style={{"marginBottom":"0.5vw","display":"flex","alignContent":"center"}} hover={{"textDecoration":"underline"}}>We value your opinion, please take a moment to fill out our   <Link className='px-1 ' to={`/feedback`}  style={{"textDecoration":"none"}}> feedback form </Link>   to help us improve.</p>
+        <p class="_para__feedback_1ob32_130 text-xs md:text-sm lg:text-lg flex-wrap" style={{"marginBottom":"0.5vw","display":"flex","alignContent":"center"}} hover={{"textDecoration":"underline"}}>We value your opinion, please take a moment to fill out our   <Link className='px-1 ' to={`/proffeedback`}  style={{"textDecoration":"none"}}> feedback form </Link>   to help us improve.</p>
        </div>
             </div>
             }
