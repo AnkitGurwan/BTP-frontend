@@ -23,7 +23,7 @@ const Feedbackpage = () => {
             toast.success('Feedback sent successfully', {
                 position: toast.POSITION.TOP_CENTER
             });
-            navigate('/studentallproject');
+            navigate('/owner');
         }
 
         else
@@ -45,11 +45,11 @@ const Feedbackpage = () => {
                         <input type="email" id="email" class="shadow-md p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white  dark:shadow-sm-light" autoFocus onChange={detectChanges} placeholder="name@gmail.com" required/>
                     </div>
                     <div>
-                        <label for="subject" class="block mb-2 text-lg font-medium text-gray-900 dark:text-gray-300"><div>Subject</div><div className="text-red-600">*</div></label>
+                        <label for="subject" class="block mb-2 text-lg font-medium flex text-gray-900 dark:text-gray-300"><div>Subject</div><div className="text-red-600">*</div></label>
                         <input type="text" id="header" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:shadow-sm-light" name='header' value={feedback.header} onChange={detectChanges} placeholder="Let us know how we can help you" required/>
                     </div>
                     <div class="sm:col-span-2">
-                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"><div>Your Message</div><div className="text-red-600">*</div></label>
+                        <label for="message" class="block mb-2 text-sm font-medium flex text-gray-900 dark:text-gray-400"><div>Your Message</div><div className="text-red-600">*</div></label>
                         <textarea id="body" rows="6" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"  name='body' value={feedback.body} required onChange={detectChanges} placeholder="Leave a comment..."></textarea>
                     </div>
                     <button type="submit" class="py-2 px-3 text-md font-medium text-center text-white rounded-lg bg-blue-700 sm:w-fit hover:bg-primary-800  dark:bg-primary-600 dark:hover:bg-primary-700 ">Send message</button>
