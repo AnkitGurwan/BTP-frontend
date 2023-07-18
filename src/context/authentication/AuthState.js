@@ -85,7 +85,7 @@ const AuthState = (props) => {
             body: JSON.stringify({ email, password }),
         });
         
-        return (response.status);
+        return response.status;
     }
 
     const sendFeedback = async (email, header,body)=>{
@@ -97,7 +97,7 @@ const AuthState = (props) => {
             body: JSON.stringify({ email, header,body }),
         });
         
-        return (response.status);
+        return response.status;
     }
 
     const ownerdetails = async(id)=>{
