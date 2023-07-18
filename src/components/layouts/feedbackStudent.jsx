@@ -23,11 +23,11 @@ const Feedbackpage = () => {
             toast.success('Feedback sent successfully', {
                 position: toast.POSITION.TOP_CENTER
             });
-            navigate('/owner');
+            navigate('/studentallproject');
         }
 
         else
-        toast.error('Please login again and try to send', {
+        toast.success('Please login again and try to send', {
             position: toast.POSITION.TOP_CENTER
         });
     }
@@ -42,7 +42,7 @@ const Feedbackpage = () => {
                 <form onSubmit={submit} class="space-y-6">
                     <div>
                         <label for="email" class="block mb-2 text-lg flex font-medium text-gray-900 dark:text-gray-300"><div>Your email</div><div className="text-red-600">*</div></label>
-                        <input type="email" id="email" class="shadow-md p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white  dark:shadow-sm-light" autoFocus onChange={detectChanges} placeholder="name@gmail.com" required/>
+                        <input type="email" id="email" class="shadow-md p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white  dark:shadow-sm-light" name='email' value={feedback.email} autoFocus onChange={detectChanges} placeholder="name@gmail.com" required/>
                     </div>
                     <div>
                         <label for="subject" class="block mb-2 text-lg font-medium flex text-gray-900 dark:text-gray-300"><div>Subject</div><div className="text-red-600">*</div></label>
