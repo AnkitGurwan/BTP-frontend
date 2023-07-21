@@ -172,7 +172,7 @@ const ItemState=(props)=>{
     const logout=async()=>{
         
         const tenantID = process.env.MICROSOFT_GRAPH_TENANT_ID;
-        const logoutEndpoint = `https://login.microsoftonline.com/${tenantID}/oauth2/v2.0/logout?post_logout_redirect_uri=${REACT_APP_FRONTEND_URL}`;
+        const logoutEndpoint = `https://login.microsoftonline.com/${tenantID}/oauth2/v2.0/logout?post_logout_redirect_uri=${process.env.REACT_APP_FRONTEND_URL}`;
         window.location.href = logoutEndpoint;
     }
     
