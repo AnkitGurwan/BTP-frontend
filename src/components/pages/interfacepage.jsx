@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Header from '../layouts/interfacePageslHeader';
 import Body from '../layouts/interface';
+import ItemContext from '../../context/project/ItemContext';
 
-function Interfacepage(){
+
+const Interfacepage = () => {
+    const {allProjects} = useContext(ItemContext);
+    const getItem = async ()=>{        
+        await allProjects(); 
+    };
+    useEffect(()=>{
+        getItem();
+      },[]) 
+
     return(
         <div style={{"width":"100vw"}}>
             <Header />
