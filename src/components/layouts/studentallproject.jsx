@@ -30,7 +30,7 @@ const Createaccount=(req,res)=>{
   const funcAllowed= () => {
     if(localStorage.getItem('studRoll'))
     {
-      if(210103000 < localStorage.getItem('studRoll') && localStorage.getItem('studRoll') < 210103140){
+      if(REACT_APP_ROLL_LOW < localStorage.getItem('studRoll') && localStorage.getItem('studRoll') < REACT_APP_ROLL_HIGH){
           setAllowed(true);
           setLoading(false);
       }
