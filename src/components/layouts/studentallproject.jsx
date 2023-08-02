@@ -30,15 +30,15 @@ const Createaccount=(req,res)=>{
   const funcAllowed= () => {
     if(localStorage.getItem('studRoll'))
     {
-      if(`${process.env.REACT_APP_ROLL_LOW}` < localStorage.getItem('studRoll') && localStorage.getItem('studRoll') < `${process.env.REACT_APP_ROLL_HIGH}`){
+      // if(`${process.env.REACT_APP_ROLL_LOW}` < localStorage.getItem('studRoll') && localStorage.getItem('studRoll') < `${process.env.REACT_APP_ROLL_HIGH}`){
           setAllowed(true);
           setLoading(false);
-      }
-      else 
-      {
-        setLoading(false);
-        setAllowed(false);
-      }
+    //   }
+    //   else 
+    //   {
+    //     setLoading(false);
+    //     setAllowed(false);
+    //   }
     }
     else 
     {
