@@ -27,6 +27,7 @@ const ItemState=(props)=>{
             }
         });
         const json=await response.json();
+        json.reverse();
         json.map((value)=>{if(value)value.title=_(value.title).capitalize()})
         json.map((value)=>{if(value)value.co_supervisor=_(value.co_supervisor).capitalize()})
         json.map((value)=>{if(value)value.brief_abstract=_(value.brief_abstract).capitalize()})
