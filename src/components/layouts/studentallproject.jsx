@@ -55,14 +55,16 @@ const Createaccount=(req,res)=>{
   const userId=localStorage.getItem('studId');
   const userName=localStorage.getItem('studName');
  
-  const getItem=async ()=>{
+  const getItem = async ()=>{
       const code=searchParams.get('code');  
 
       await allProjects();
+
       if(localStorage.getItem('studName') === null && code)
         await getToken(code);
 
       await getAllStudent(); 
+      
       if(localStorage.getItem('studName'))
         await createStudent(localStorage.getItem('studId'),localStorage.getItem('studName'),localStorage.getItem('studRoll'));
 
