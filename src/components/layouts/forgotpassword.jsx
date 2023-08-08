@@ -12,23 +12,23 @@ const Forgotpassword=()=>{
         setEm({...em,[e.target.name]:e.target.value});
     }
 
-    const navigate=useNavigate();
+    const Navigate=useNavigate();
 
     const submit = async (e)=>{
         e.preventDefault();
-        const x=await resetPassword(em.email);
+        const x = await resetPassword(em.email);
         
-        if(x===404)
+        if(x === 404)
         toast.error('Cannot Change Password For This Email', {
         position: toast.POSITION.TOP_CENTER    
         });
-        else if(x===400)
+        else if(x === 400)
         toast.error('User not exist', {
         position: toast.POSITION.TOP_CENTER    
         });
         else
         {
-            navigate('/login') ;
+            Navigate(`/login`) ;
             toast.success('Email sent successfully', {
             position: toast.POSITION.TOP_CENTER
             });
