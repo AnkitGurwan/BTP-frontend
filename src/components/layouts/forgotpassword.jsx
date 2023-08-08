@@ -17,18 +17,22 @@ const Forgotpassword=()=>{
     const submit = async (e)=>{
         e.preventDefault();
         const x=await resetPassword(em.email);
-        if(x===200)
+        
+        if(x===404)
+        toast.error('Cannot Change Password For This Email', {
+        position: toast.POSITION.TOP_CENTER    
+        });
+        else if(x===400)
+        toast.error('User not exist', {
+        position: toast.POSITION.TOP_CENTER    
+        });
+        else
         {
             navigate('/login') ;
             toast.success('Email sent successfully', {
             position: toast.POSITION.TOP_CENTER
             });
-            document.getElementById('button').style.backgroundColor='green';
         }
-        else if(x===400)
-        toast.error('User not exist', {
-        position: toast.POSITION.TOP_CENTER    
-        });
         }
 
     return(
