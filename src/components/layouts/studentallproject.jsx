@@ -63,13 +63,17 @@ const Createaccount=(req,res)=>{
       await allProjects();
 
       if(localStorage.getItem('studName') === null && code)
-        await getToken(code);
-
+       {
+        console.log("jsonopop");
+         await getToken(code);
+       }
+       console.log("21");
       await getAllStudent(); 
+      console.log("22");
       
       if(localStorage.getItem('studName'))
         await createStudent(localStorage.getItem('studId'),localStorage.getItem('studName'),localStorage.getItem('studRoll'));
-
+        console.log("23");
       funcAllowed();
   }
   
