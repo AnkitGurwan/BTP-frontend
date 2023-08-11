@@ -30,7 +30,6 @@ const Createaccount=(req,res)=>{
   const funcAllowed= () => {
     if(localStorage.getItem('studRoll'))
     {
-      console.log("nooo");
       // if(`${process.env.REACT_APP_ROLL_LOW}` < localStorage.getItem('studRoll') && localStorage.getItem('studRoll') < `${process.env.REACT_APP_ROLL_HIGH}`){
           setAllowed(true);
           setLoading(false);
@@ -43,7 +42,6 @@ const Createaccount=(req,res)=>{
     }
     else 
     {
-        console.log("nooppuuo");
         Navigate("/studentlogin");
         (toast.error('Please login to access', {
           position: toast.POSITION.TOP_CENTER
@@ -59,21 +57,17 @@ const Createaccount=(req,res)=>{
  
   const getItem = async ()=>{
       const code=searchParams.get('code');  
-      console.log("code",code);
+
       await allProjects();
 
       if(localStorage.getItem('studName') === null && code)
-       {
-        console.log("jsonopop");
-         await getToken(code);
-       }
-       console.log("21");
+        await getToken(code);
+
       await getAllStudent(); 
-      console.log("22");
       
       if(localStorage.getItem('studName'))
         await createStudent(localStorage.getItem('studId'),localStorage.getItem('studName'),localStorage.getItem('studRoll'));
-        console.log("23");
+
       funcAllowed();
   }
   

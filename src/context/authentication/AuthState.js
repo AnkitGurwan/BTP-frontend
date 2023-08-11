@@ -157,8 +157,6 @@ const AuthState = (props) => {
         });
 
         const json=await response.json();
-        console.log("json",json)
-        console.log("jsonsn",json.studInformation)
         localStorage.setItem('studName',json.studInformation.givenName);
         localStorage.setItem('studId',json.studInformation.mail);
         localStorage.setItem('studRoll',json.studInformation.surname);
