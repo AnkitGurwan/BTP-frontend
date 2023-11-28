@@ -25,10 +25,10 @@ const Specificprojectcard=()=> {
     const funcAllowed = ()=>{
       if(localStorage.getItem('studRoll'))
       {
-        if(210103000 < localStorage.getItem('studRoll') && localStorage.getItem('studRoll') < 210103140){
+        // if(210103000 < localStorage.getItem('studRoll') && localStorage.getItem('studRoll') < 210103140){
             setAllowed(true);
-        }
-        else setAllowed(false);
+        // }
+        // else setAllowed(false);
       }
       else 
       {

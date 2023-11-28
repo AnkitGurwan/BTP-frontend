@@ -15,9 +15,14 @@ const Feedbackpage = () => {
 
     const submit = async (e)=>{
         e.preventDefault();   
-        sendFeedback(feedback.email,feedback.header,feedback.body);
+        const x = sendFeedback(feedback.email,feedback.header,feedback.body);
         
+        if(x === 200)
         toast.success('Feedback sent successfully', {
+            position: toast.POSITION.TOP_CENTER
+        });
+        else
+        toast.error('Please try again.', {
             position: toast.POSITION.TOP_CENTER
         });
         navigate('/owner');
