@@ -11,7 +11,7 @@ import ProfallProjectpage from './pages/profallProjectPage'
 import OwnerProjectpage from './pages/ownerProjectPage'
 import AuthState from "../context/authentication/AuthState";
 import Resetpasswordinterface from './pages/resetPasswordInterfacePage';
-import Newprojectpage from './pages/professor/newProjectPage';
+import Newprojectpage from './pages/newProjectPage';
 import Readmoreproject1 from './pages/readMorePage2';
 import Readmoreproject2 from './pages/readMorePage';
 import Updateproject from './pages/updateProjectPage';
