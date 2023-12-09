@@ -3,8 +3,9 @@ var _ = require('lodash');
 const url = "http://localhost:5000";
 
 const initialState = {
-    specificProjects:[],
-    allProjects:[],
+    specificProjects : [],
+    allProjects : [],
+    interestedStudents : [],
 }
 
 const allprojectsSlice = createSlice({
@@ -21,6 +22,12 @@ const allprojectsSlice = createSlice({
             return {
                 ...state,
                 specificProjects: action.payload
+              };
+        }, 
+        setInterestedStudents(state,action){
+            return {
+                ...state,
+                interestedStudents : action.payload
               };
         }, 
         addProject(state,action){
@@ -42,7 +49,7 @@ const allprojectsSlice = createSlice({
         // }
     }
 })
-export const {setAllProjects,setSpecificProjects,addProject,delProject,editProject} = allprojectsSlice.actions;
+export const {setAllProjects,setSpecificProjects,addProject,delProject,editProject,setInterestedStudents} = allprojectsSlice.actions;
 
 export default allprojectsSlice.reducer;
 

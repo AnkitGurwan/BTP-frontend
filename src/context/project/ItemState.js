@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch } from 'react-redux';
-import { setSpecificProjects, setAllProjects, delProject, addProject } from "../../Redux/allProjects/allprojectsSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { setSpecificProjects, setAllProjects, delProject, addProject, setInterestedStudents } from "../../Redux/allProjects/allprojectsSlice";
 import { setAllStudents } from "../../Redux/student/studentSlice"
 import ItemContext from "./ItemContext";
 var _ = require('lodash');
-
 
 
 const ItemState=(props)=>{
@@ -13,8 +12,10 @@ const ItemState=(props)=>{
     const [itemsspecific,setItemsspecific]=useState([]);
     const [details,setDetails]=useState([]);
     const [single,setSingle]=useState([]);
+    const projectsAll = useSelector(state => state.allProjects.specificProjects);
 
-    const url = process.env.REACT_APP_BACKEND_URL;
+    // const url = process.env.REACT_APP_BACKEND_URL;
+    const url = 'http://localhost:5000';
     const dispatch = useDispatch();
 
     
@@ -127,6 +128,17 @@ const ItemState=(props)=>{
             return response.status
     };
 
+    const allotProject = async(id,user,friend)=>{     
+        alert("hii")  
+            const response = await fetch(`${url}/project/allotProject/${id}/${user}/${friend}`,  {
+                method: 'GET',
+                headers: {
+                    'Content-Type': "application/json"
+                }
+            })
+            return response.status;
+    };
+
 
     const deselectproject=async(id,user)=>{       
             const response = await fetch(`${url}/project/deselectproject/${id}/${user}`,  {
@@ -148,7 +160,21 @@ const ItemState=(props)=>{
                     }
                 })            
             const json=await response.json()
-            setDetails(json)    
+            setDetails(json);    
+            return response.status;
+    };
+
+    const getInterestedStudents = async (id) => {     
+        // alert(id)     
+            const response = await fetch(`${url}/project/getInterestedStudents/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': "application/json"
+                    }
+                })            
+            const json=await response.json();
+            // alert(json)
+            dispatch(setInterestedStudents(json));    
             return response.status;
     };
 
@@ -166,8 +192,27 @@ const ItemState=(props)=>{
            return json;
     };
 
-    const getSingleProject=async(id)=>{
-        items.filter((project)=>project._id===id).map((project,i)=>{setSingle(project)  })
+    const getSingleProject = async(id)=>{
+        const response = await fetch(`${url}/project/projectSpecific/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': "application/json"
+            }
+        });
+        const json=await response.json();
+        return json;
+    }
+
+    const checkRegisteredFunc = async (email) => {
+        // alert(email)
+        const response = await fetch(`${url}/project/checkRegistered/${email}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': "application/json"
+            }
+        });
+        const json = await response.json();
+        return response.status;
     }
 
     const logout=async()=>{
@@ -179,7 +224,7 @@ const ItemState=(props)=>{
     
         
     return (
-        <ItemContext.Provider value={{details,logout,getAllStudent,allProjects,createStudent,items,createProject,updateProject,deleteProject,selectproject,deselectproject,ownerdetails,Projectspecific,itemsspecific,getSingleProject,single}}>
+        <ItemContext.Provider value={{details,logout,getAllStudent,allProjects,createStudent,items,createProject,updateProject,deleteProject,selectproject,deselectproject,ownerdetails,Projectspecific,itemsspecific,getSingleProject,single, getInterestedStudents,allotProject,checkRegisteredFunc}}>
             {props.children}
         </ItemContext.Provider>
     )

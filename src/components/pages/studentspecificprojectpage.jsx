@@ -1,5 +1,5 @@
 import React from 'react';
-import Studentspecificproject from '../layouts/studentprojectspecific';
+import Studentspecificproject from '../layouts/students/studentprojectspecific';
 import Header from '../layouts/mainPagesHeader'
 
 function ProjectPage(){

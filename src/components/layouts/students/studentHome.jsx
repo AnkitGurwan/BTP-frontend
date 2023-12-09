@@ -1,20 +1,21 @@
 import React,{useState, useContext,useEffect} from 'react';
 import { Link, useLocation,useSearchParams,useNavigate } from 'react-router-dom';
-import ItemContext from '../../context/project/ItemContext';
+import ItemContext from '../../../context/project/ItemContext';
 import Projectcard from './studentprojectcard'
-import AuthContext from '../../context/authentication/AuthContext';
+import AuthContext from '../../../context/authentication/AuthContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 
 const Createaccount=(req,res)=>{
-  const {allProjects,logout,getAllStudent,createStudent} = useContext(ItemContext);
+  const {allProjects,logout,getAllStudent,createStudent,checkRegisteredFunc} = useContext(ItemContext);
   const {getToken} = useContext(AuthContext);
   const students = useSelector(state => state.student.allStudents);
   const location = useLocation();
   const [mobileMenu,setMobileMenu]=useState(false);
   const [allowed,setAllowed]=useState(false);
   const [loading,setLoading]=useState(true);
+  const [checkRegistered,setCheckRegistered]=useState(false);
   const Navigate = useNavigate();
 
   var items = useSelector(state => state.allProjects.allProjects);
@@ -30,15 +31,15 @@ const Createaccount=(req,res)=>{
   const funcAllowed= () => {
     if(localStorage.getItem('studRoll'))
     {
-      // if(`${process.env.REACT_APP_ROLL_LOW}` < localStorage.getItem('studRoll') && localStorage.getItem('studRoll') < `${process.env.REACT_APP_ROLL_HIGH}`){
+      if(`${process.env.REACT_APP_ROLL_LOW}` <= localStorage.getItem('studRoll') && localStorage.getItem('studRoll') <= `${process.env.REACT_APP_ROLL_HIGH}`){
           setAllowed(true);
           setLoading(false);
-    //   }
-    //   else 
-    //   {
-    //     setLoading(false);
-    //     setAllowed(false);
-    //   }
+      }
+      else 
+      {
+        setLoading(false);
+        setAllowed(false);
+      }
     }
     else 
     {
@@ -52,11 +53,19 @@ const Createaccount=(req,res)=>{
 
   var count="";
   var flag=0;
-  const userId=localStorage.getItem('studId');
+  const userId = localStorage.getItem('studId');
   const userName=localStorage.getItem('studName');
  
   const getItem = async ()=>{
-      const code=searchParams.get('code');  
+      const code=searchParams.get('code'); 
+      // alert(userId)
+      
+      const x = await checkRegisteredFunc(userId);
+      alert(x)
+      if(x === 200)setCheckRegistered(true);
+      else setCheckRegistered(false);
+
+      alert(checkRegistered)
 
       await allProjects();
 
@@ -124,14 +133,18 @@ const Createaccount=(req,res)=>{
                           <i class="fas fa-search text-xl" style={{"color":"white","paddingRight":"15px","height":"100%"}}></i>
                             <div class="form-outline">
                               
-                              <input id="search-input" type="search"  class="form-control border-none" name='search' placeholder="Search by Title name" value={search} onChange={detectChanges} style={{"width":"30vw","textAlign":"center"}} />
+                              <input id="search-input" type="search"  class="form-control border-none" name='search' placeholder="Search by Title name" value={search} onChange={detectChanges} style={{"width":"30vw","textAlign":"start"}} />
                             </div>
                           </div>
                       </div>
                       <div class=" absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-4 sm:pr-0">
                        
-                      {flag===-1?<div class="loader"></div>:flag===0?(<div className='w-28 px-1 md:w-36 text-xs md:text-lg py-1 md:py-1' style={{"backgroundColor":"red","textAlign":"center","borderRadius":"3px","color":"white","marginRight":"1vw","fontWeight":"600"}}>Not Registered</div>):
-                       (<div className='w-28 px-1 md:w-32 text-xs md:text-md md:py-1' style={{"backgroundColor":"green","textAlign":"center","borderRadius":"3px","fontSize":"larger","color":"white","marginRight":"1vw","fontWeight":"600"}}>Registered</div>)}
+                      {
+                      !checkRegistered
+                      ?
+                      (<div className='w-28 px-1 md:w-36 text-xs md:text-lg py-1 md:py-1' style={{"backgroundColor":"red","textAlign":"center","borderRadius":"3px","color":"white","marginRight":"1vw","fontWeight":"600"}}>Not Alloted</div>)
+                      :
+                       (<div className='w-28 px-1 md:w-32 text-xs md:text-md md:py-1' style={{"backgroundColor":"green","textAlign":"center","borderRadius":"3px","fontSize":"larger","color":"white","marginRight":"1vw","fontWeight":"600"}}>Alloted</div>)}
 
                       {flag===0?(
                         <div className='hidden md:flex'>
@@ -140,7 +153,7 @@ const Createaccount=(req,res)=>{
                         </div>
                       ):(
                         <div className='hidden md:flex'>
-                          <a href={`/studentallproject/${count}`} class="text-gray-400 hover:text-white px-3 py-2 rounded-md text-lg font-x-large" style={{"textDecoration":"none"}}><i class="fa-solid fa-book text-md" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>My Project</a>
+                          <Link to={`/studentallproject/${count}`} class="text-gray-400 hover:text-white px-3 py-2 rounded-md text-lg font-x-large" style={{"textDecoration":"none"}}><i class="fa-solid fa-book text-md" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>My Project</Link>
                           <a href='#partner' class="text-gray-400 hover:text-white px-3 no-underline py-2 rounded-md text-lg font-x-large z-10" style={{"textDecoration":"none","cursor":"pointer"}}><i class="fa-solid fa-userId text-md" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>My Partner</a>
                       </div>
                       )}

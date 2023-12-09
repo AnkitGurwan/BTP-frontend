@@ -1,7 +1,7 @@
 import React, { useContext,useEffect } from "react";
 import { useParams,Link } from 'react-router-dom';
 import ItemContext from '../../context/project/ItemContext';
-import Projectcardspecific from "./projectcardspecific2";
+import Projectcardspecific from "./professor/projectcardspecific2";
 import { useSelector } from 'react-redux';
 
 

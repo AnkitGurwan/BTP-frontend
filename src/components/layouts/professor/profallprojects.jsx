@@ -1,6 +1,6 @@
 import React,{useContext,useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
-import ItemContext from '../../context/project/ItemContext';
+import ItemContext from '../../../context/project/ItemContext';
 import Projectcard from './projectcard2'
 import { useSelector } from 'react-redux';
 

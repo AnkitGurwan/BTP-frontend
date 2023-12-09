@@ -1,12 +1,11 @@
 import React from 'react';
-import Studentproject from '../layouts/studentallproject';
+import Studentproject from '../layouts/students/studentHome';
 
 function Studentallproject(){
         
     return(
         <div>
-            <Studentproject className='disable-scrolling'/>
-            
+            <Studentproject className='disable-scrolling'/>   
         </div>
     )
 }

@@ -1,25 +1,26 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Header from '../layouts/interfacePageslHeader';
-import Proflogin from '../layouts/proflogin';
+import Header from '../layouts/interfacePageHeader';
+import Proflogin from '../layouts/professor/profLogin';
 
-const Mainlogin=()=>{
-    const Navigate = useNavigate();
-    useEffect(()=>{
-        if(localStorage.getItem('btpToken'))
-        {
-            Navigate(`/owner`);
+const Mainlogin = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (localStorage.getItem('btpToken')) {
+            navigate(`/owner`);
         }
-    })
+    }, []); // Empty dependency array ensures the effect runs only once
 
-    return(
+    return (
         <div>
             <Header />
-            <div className='body2div'>
-                <Link className='goback' to={`/`}><i class="fa-sharp fa-solid fa-arrow-left text-3xl md:text-4xl my-4 md:my-2 ml-2"/></Link>
+            <div>
+                <Link to={`/`}><i className="bg-blue-200 rounded-full fa-sharp fa-solid fa-arrow-left sm:mx-2 md:mx-4 mt-2 md:mt-5 text-3xl md:text-3xl p-2"/></Link>
                 <Proflogin />
             </div>
         </div>
-    )
-}
+    );
+};
+
 export default Mainlogin;

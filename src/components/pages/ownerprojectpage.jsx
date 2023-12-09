@@ -2,7 +2,7 @@ import React,{useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Allprojects from '../layouts/ownerprojects';
+import Allprojects from '../layouts/professor/ownerprojects';
 import Header from '../layouts/mainPagesHeader'
 
 function ProjectPage(){

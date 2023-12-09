@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import Header from '../layouts/interfacePageslHeader';
+import Header from '../layouts/interfacePageHeader';
 import Body from '../layouts/interface';
 import ItemContext from '../../context/project/ItemContext';
 

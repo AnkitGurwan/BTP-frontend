@@ -2,8 +2,8 @@ import React,{useContext,useEffect,useState} from 'react';
 import { Link,useNavigate,useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ItemContext from '../../context/project/ItemContext';
-import AuthContext from '../../context/authentication/AuthContext';
+import ItemContext from '../../../context/project/ItemContext';
+import AuthContext from '../../../context/authentication/AuthContext';
 
 function Projectcard(props){
     const {project}=props;
@@ -70,18 +70,18 @@ const click=()=>{}
       }
 
     return(
-        <div className='projectcardmaindivv'>    
+        <div className='w-full py-2 font-Manrope'>    
             <div class="px-6 py-3 rounded-lg border-4 bg-gray-100" style={{"width":"auto","height":"auto"}}>
               <div class="card-body" style={{"display":"flex","flexDirection":"column","alignItems":"start"}}>
-                <h3 class="card-title pb-4"><i class="fa-solid fa-book text-md" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>{project.title}</h3>
+                <h4 class="card-title p-2 mb-2 rounded-sm bg-gray-300"><i class="fa-solid fa-book text-md" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>{project.title}</h4>
                 
-                <h4 class="card-subtitle text-muted text-lg" style={{}}><i class="fa-solid fa-user text-lg" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>{project.co_supervisor}<h6 className='text-sm'>(co-supervisor)</h6></h4>
+                <h4 class="text-muted text-sm mb-0 pb-0" style={{}}><i class="fa-solid fa-user text-sm" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>{project.co_supervisor}<h6 className='text-sm'>(co-supervisor)</h6></h4>
                 <hr className='w-full'/>
-                <p className='text-start'>{project.brief_abstract}</p>
+                <p className='text-start text-sm my-0'>{project.brief_abstract}</p>
                 <hr className='w-full'/>
-                <p class="card-text pb-2 flex flex-col"><h5 className='flex items-center mb-0'><span class="material-symbols-outlined pr-1">
+                <p class="flex flex-col"><h5 className='flex items-center mb-0'><span class="material-symbols-outlined pr-1">
                 school
-                </span><div className='text-lg m-0 '>Specialisation</div></h5><div className='text-sm pl-2'>{project.specialization}</div></p>
+                </span><div className='text-sm m-0 '>Specialisation</div></h5><div className='text-sm pl-2'>{project.specialization}</div></p>
                 <h6 class="card-title text-sm">Created on {project.creation_date} </h6>
                 <h6 class="card-title pb-0 text-sm">Created at {project.creation_time} </h6>
                 <button id="myBtn" className='projectcardlink22' onclick={click}>Delete</button>

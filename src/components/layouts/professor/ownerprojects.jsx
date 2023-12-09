@@ -1,10 +1,10 @@
 import React,{useContext,useEffect,useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import ItemContext from '../../context/project/ItemContext';
+import ItemContext from '../../../context/project/ItemContext';
 import Projectcard from './projectcard';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AuthContext from '../../context/authentication/AuthContext';
+import AuthContext from '../../../context/authentication/AuthContext';
 import { useSelector } from 'react-redux';
 var _ = require('lodash');
 
@@ -180,7 +180,12 @@ const Createaccount=()=>{
               <i class="fa-solid fa-download text-4xl" onClick={download} style={{"display":"flex","flexDirection":"column","justifyContent":"center","padding":"0px","cursor":"pointer"}}></i>
             </div>
            
-            <div className='grid grid-cols-2 my-12 mt-20 mx-1 px-2 md:grid-cols-3 lg:grid-cols-5'>{items.filter((projects)=>{ return search.toString().toLowerCase()==='' ? projects : projects.title.toLowerCase().includes(search.toLocaleLowerCase())}).map( (project,i)=>{ return (<Projectcard key={i} project={project}/>)})}</div>
+            <div className='grid grid-cols-2 my-12 mt-20 mx-1 px-2 md:grid-cols-3 lg:grid-cols-5'>
+              {items.filter((projects) => { 
+                return search.toString().toLowerCase()==='' ? projects : projects.title.toLowerCase().includes(search.toLocaleLowerCase())}).map( (project,i) => { 
+                  return (<Projectcard key={i} project={project}/>)})
+              }
+            </div>
 
 
 

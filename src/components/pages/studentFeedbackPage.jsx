@@ -1,5 +1,5 @@
 import React from 'react';
-import Feedback from '../layouts/feedbackStudent';
+import Feedback from '../layouts/students/feedbackStudent';
 
 function Feedbackpage(){
     return(
