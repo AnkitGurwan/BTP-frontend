@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import Header from '../layouts/interfacePageHeader';
-import Body from '../layouts/interface';
 import ItemContext from '../../context/project/ItemContext';
+import { Link } from 'react-router-dom';
 
 
 const Interfacepage = () => {
@@ -16,7 +16,10 @@ const Interfacepage = () => {
     return(
         <div style={{"width":"100vw"}}>
             <Header />
-            <Body />
+            <div className='bodymaindiv'>
+            <div className='bodydiv1'><Link to="/login" className='bodya'>Professor</Link></div>
+            <div className='bodydiv2'><Link to="/studentlogin" className='bodya'>Student</Link></div>
+        </div> 
         </div>
     )
 }
