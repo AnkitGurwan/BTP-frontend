@@ -8,8 +8,8 @@ const AuthState = (props) => {
     // const [btpToken,setBtpToken]=useState()
     const [interest,setInterest]=useState([])
 
-    const url = 'http://localhost:5000';
-    // const url = process.env.REACT_APP_BACKEND_URL;
+    // const url = 'http://localhost:5000';
+    const url = process.env.REACT_APP_BACKEND_URL;
 
     const registerUser = async (name, email) => {
         
