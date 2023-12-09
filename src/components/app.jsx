@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter,Route,Routes} from 'react-router-dom';
 
-import Interface from './pages/interfacePage';
+import Interface from './pages/interFacePage';
 import Proflogin from './pages/profLoginPage';
 import Studentlogin from './pages/studentLoginPage';
 import Profcreateaccountpage from './pages/profcreateAccountPage';
