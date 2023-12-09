@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter,Route,Routes} from 'react-router-dom';
 
-import Interface from './pages/interFacePage';
+import Interface from './pages/interfacePage';
 import Proflogin from './pages/profLoginPage';
 import Studentlogin from './pages/studentLoginPage';
 import Profcreateaccountpage from './pages/profcreateAccountPage';
@@ -9,7 +9,7 @@ import Createpassword from './pages/createPasswordPage';
 import Forgotpassword from './pages/forgotPasswordPage';
 import ProfallProjectpage from './pages/profallProjectPage'
 import OwnerProjectpage from './pages/ownerProjectPage'
-import AuthState from "../context/authentication/AuthState";
+import AuthState from "./context/authentication/AuthState";
 import Resetpasswordinterface from './pages/resetPasswordInterfacePage';
 import Newprojectpage from './pages/newProjectPage';
 import Readmoreproject1 from './pages/readMorePage2';
@@ -20,7 +20,7 @@ import Studentspecificproject from './pages/studentSpecificProjectPage';
 import StudentFeedback from './pages/studentFeedbackPage';
 import ProfFeedback from './pages/profFeedbackPage';
 // import Newpage from './pages/newpage';
-import ItemState from '../context/project/ItemState';
+import ItemState from './context/project/ItemState';
 
 
 function App(){
