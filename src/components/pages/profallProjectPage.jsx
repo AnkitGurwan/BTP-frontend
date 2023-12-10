@@ -7,14 +7,14 @@ import Header from '../layouts/mainPagesHeader'
 
 function ProfallprojectPage(){
     const Navigate=useNavigate();
-    useEffect(()=>{
-        if(!localStorage.getItem('btpToken')){
-            Navigate("/login");
-            (toast.error('Please login to access', {
-                position: toast.POSITION.TOP_CENTER
-            }))
-        };
-        },[]);
+    // useEffect(()=>{
+    //     if(!localStorage.getItem('btpToken')){
+    //         Navigate("/login");
+    //         (toast.error('Please login to access', {
+    //             position: toast.POSITION.TOP_CENTER
+    //         }))
+    //     };
+    //     },[]);
      
     return(
         <div>

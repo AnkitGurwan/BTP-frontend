@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthContext from '../../../context/authentication/AuthContext';
-import '../styles.css'
 
 const Body2 = () => {
     const [user, setUser] = useState({
@@ -49,7 +48,7 @@ const Body2 = () => {
             <div className='w-full md:w-1/3 shadow-md rounded-lg border p-2 md:p-3'>
                 <ul className="py-2 px-2 flex justify-center items-center">
                     <li className="w-1/2 flex justify-center items-center">
-                        <div className="text-center font-medium md:font-bold text-sm md:text-xl mx-1 py-2 cursor-pointer w-full bg-blue-400 text-white">Login</div>
+                        <div className="text-center font-medium md:font-bold text-sm md:text-xl mx-1 py-2 w-full bg-blue-400 text-white">Login</div>
                     </li>
                     <li className='w-1/2 flex justify-center items-center'>
                         <div className="text-center py-2 text-sm md:text-xl mx-1 cursor-pointer w-full border text-gray-600 font-medium md:font-bold" onClick={redirectToRegister}>Register</div>
@@ -62,7 +61,7 @@ const Body2 = () => {
                             <input
                                 type="email"
                                 id="loginName"
-                                className="w-full px-3 md:px-4 py-2 text-sm md:text-lg border rounded-md focus:outline-none focus:border-indigo-500"
+                                className="w-full px-3 md:px-4 py-2 text-xs md:text-sm border rounded-md focus:outline-none focus:border-indigo-500"
                                 placeholder="Email (i.e. 123@gmail.com)"
                                 required
                                 autoFocus
@@ -76,7 +75,7 @@ const Body2 = () => {
                             <input
                                 type="password"
                                 id="loginPassword"
-                                className="w-full px-3 md:px-4 py-2 text-sm md:text-lg border rounded-md focus:outline-none focus:border-indigo-500"
+                                className="w-full px-3 md:px-4 py-2 text-xs md:text-sm border rounded-md focus:outline-none focus:border-indigo-500"
                                 placeholder="Password"
                                 required
                                 name="password"
