@@ -50,7 +50,7 @@ const Createpassword = () => {
     };
 
     return (
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center mx-4">
             <br />
             <div className="text-xl md:text-2xl font-medium pb-3 text-center">Create Password for your account</div>
             <div className="shadow-lg mx-auto w-full p-8 md:w-1/3">
@@ -85,7 +85,7 @@ const Createpassword = () => {
                             {passwordMatch ? <div className="text-sm text-red-600 my-3">Password not matched</div> : ''}
                         </div>
 
-                        <button className="bg-green-600 rounded-md text-white w-1/2 md:w-1/3 mx-auto mt-3 py-2 font-semibold  text-2xl" type="submit">
+                        <button className="bg-green-600 rounded-md text-white w-1/2 md:w-1/3 mx-auto mt-3 py-2 font-medium md:font-semibold  text-lg md:text-xl" type="submit">
                             Submit
                         </button>
                     </form>

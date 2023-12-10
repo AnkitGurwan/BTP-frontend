@@ -15,7 +15,6 @@ const Createaccount = () => {
 
     const submit = async (e) => {
         e.preventDefault();
-        console.log("111");
         const x = await registerUser(user.name, user.email);
 
         if (x === 200) {
@@ -35,24 +34,24 @@ const Createaccount = () => {
     };
 
     return (
-        <div className="flex justify-center mx-4">
-            <div className='w-full md:w-1/3 shadow-md rounded-lg border p-3'>
+        <div className="flex justify-center mx-4 mt-8 md:mt-0">
+            <div className='w-full md:w-1/3 shadow-md rounded-lg border p-2 md:p-3'>
                 <ul className="py-2 px-2 flex justify-center items-center">
                     <li className="w-1/2 flex justify-center items-center">
-                        <div className="text-center font-semibold md:font-bold text-lg md:text-xl mx-1 py-2 cursor-pointer w-full border text-gray-600" onClick={redirectToLogin}>Login</div>
+                        <div className="text-center font-medium md:font-bold text-sm md:text-xl mx-1 py-2 cursor-pointer w-full border text-gray-600" onClick={redirectToLogin}>Login</div>
                     </li>
                     <li className='w-1/2 flex justify-center items-center'>
-                        <div className="text-center py-2 text-lg md:text-xl mx-1 cursor-pointer w-full  font-semibold md:font-bold bg-blue-400 text-white" >Register</div>
+                        <div className="text-center py-2 text-sm md:text-xl mx-1 cursor-pointer w-full  font-medium md:font-bold bg-blue-400 text-white" >Register</div>
                     </li>
                 </ul>
 
-                <div className="p-3 md:p-4">
+                <div className="p-2 md:p-4">
                     <form onSubmit={submit}>
                         <div className="mb-3">
                             <input
                                 type="name"
                                 id="name"
-                                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
+                                className="w-full px-4 py-2 text-sm md:text-lg border rounded-md focus:outline-none focus:border-indigo-500"
                                 placeholder="Your full name"
                                 required
                                 autoFocus
@@ -66,7 +65,7 @@ const Createaccount = () => {
                             <input
                                 type="email"
                                 id="email"
-                                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
+                                className="w-full px-4 py-2 text-sm md:text-lg border rounded-md focus:outline-none focus:border-indigo-500"
                                 placeholder="Email (i.e. 123@gmail.com)"
                                 required
                                 name="email"
