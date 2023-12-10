@@ -67,16 +67,16 @@ const Createaccount = (req, res) => {
 
   const getItem = async () => {
     const code = searchParams.get('code');
-    const x = await checkRegisteredFunc(userId);
-
-    if (x === 200) setCheckRegistered(true);
-    else setCheckRegistered(false);
-
 
     await allProjects();
 
     if (localStorage.getItem('studName') === null && code)
       await getToken(code);
+
+    const x = await checkRegisteredFunc(userId);
+
+    if (x === 200) setCheckRegistered(true);
+    else setCheckRegistered(false);
 
     await getAllStudent();
 
