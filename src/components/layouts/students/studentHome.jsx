@@ -6,6 +6,7 @@ import AuthContext from '../../../context/authentication/AuthContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import Header from './navbarStudent'
+import { toast } from 'react-toastify';
 
 const Createaccount = (req, res) => {
   const {
@@ -40,31 +41,32 @@ const Createaccount = (req, res) => {
 
   //check student allowed or not to access the page
   const funcAllowed = () => {
-    // if (localStorage.getItem('studRoll')) {
-    //   if (
-    //     `${process.env.REACT_APP_ROLL_LOW}` <= localStorage.getItem('studRoll') &&
-    //     localStorage.getItem('studRoll') <= `${process.env.REACT_APP_ROLL_HIGH}`
-    //   ) {
-    //     setAllowed(true);
-    //     setLoading(false);
-    //   } else {
-    //     setLoading(false);
-    //     setAllowed(true);
-    //   }
-    // } else {
-    //   Navigate('/studentlogin');
-    //   toast.error('Please login to access', {
-    //     position: toast.POSITION.TOP_CENTER,
-    //   });
-    // }
-    setAllowed(true)
-    setLoading(false)
+    if (localStorage.getItem('studRoll')) {
+      if (
+        `${process.env.REACT_APP_ROLL_LOW}` <= localStorage.getItem('studRoll') &&
+        localStorage.getItem('studRoll') <= `${process.env.REACT_APP_ROLL_HIGH}`
+      ) {
+        setAllowed(true);
+        setLoading(false);
+      } else {
+        setLoading(false);
+        setAllowed(true);
+      }
+    } else {
+      Navigate('/studentlogin');
+      toast.error('Please login to access', {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+    // setAllowed(true)
+    // setLoading(false)
   };
 
   var count = '';
   var flag = 0;
-  const userId = localStorage.getItem('studId');
+  
   const userName = localStorage.getItem('studName');
+  const userId = localStorage.getItem('studId');
 
   const getItem = async () => {
     const code = searchParams.get('code');
@@ -74,6 +76,7 @@ const Createaccount = (req, res) => {
     if (localStorage.getItem('studName') === null && code)
       await getToken(code);
 
+    const userId = localStorage.getItem('studId');
     const x = await checkRegisteredFunc(userId);
 
     if (x === 200) setCheckRegistered(true);

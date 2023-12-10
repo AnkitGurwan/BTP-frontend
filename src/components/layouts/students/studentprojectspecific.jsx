@@ -29,22 +29,22 @@ const Specificprojectcard=()=> {
     const items = useSelector(state => state.allProjects.allProjects);
 
     const funcAllowed = ()=>{
-      // if(localStorage.getItem('studRoll'))
-      // {
-      //   if(210103001 <= localStorage.getItem('studRoll') && localStorage.getItem('studRoll') <= 210103140){
-      //       setAllowed(true);
-      //   }
-      //   else setAllowed(false);
-      // }
-      // else 
-      // {
-      //     Navigate("/studentlogin");
-      //     (toast.error('Please login to access', {
-      //       position: toast.POSITION.TOP_CENTER
-      //   }));
-      // } 
-      setAllowed(true)
-      setLoading(false)
+      if(localStorage.getItem('studRoll'))
+      {
+        if(210103001 <= localStorage.getItem('studRoll') && localStorage.getItem('studRoll') <= 210103140){
+            setAllowed(true);
+        }
+        else setAllowed(false);
+      }
+      else 
+      {
+          Navigate("/studentlogin");
+          (toast.error('Please login to access', {
+            position: toast.POSITION.TOP_CENTER
+        }));
+      } 
+      // setAllowed(true)
+      // setLoading(false)
     }
 
     const getItem=async ()=>{
