@@ -42,7 +42,7 @@ const ForgotPassword = () => {
                 <div className='w-full md:w-1/3 shadow-md rounded-lg border p-2 md:p-3'>
                     <div className='flex w-full py-2 px-2'>
                         <span className='text-center font-medium md:font-bold text-sm md:text-xl mx-1 py-2 w-full bg-blue-400 text-white'>Enter your Gmail</span>
-                        <span className='text-center py-2 text-sm md:text-xl mx-1 cursor-pointer w-full border text-gray-600 font-medium md:font-bold' onClick={redirectToLogin}>Go Back</span>
+                        <span className='text-center py-2 text-sm md:text-xl mx-1 cursor-pointer w-full border text-gray-600 font-medium md:font-bold flex items-center justify-center' onClick={redirectToLogin}>Go Back</span>
                     </div>
                     <div className="w-full p-2 flex flex-col justify-center items-center ">
                     <form onSubmit={submit} className='w-full flex flex-col justify-center items-center '>
