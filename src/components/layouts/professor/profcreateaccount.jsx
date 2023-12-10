@@ -51,7 +51,7 @@ const Createaccount = () => {
                             <input
                                 type="name"
                                 id="name"
-                                className="w-full px-4 py-2 text-sm md:text-lg border rounded-md focus:outline-none focus:border-indigo-500"
+                                className="w-full px-4 py-2 text-xs md:text-sm border rounded-md focus:outline-none focus:border-indigo-500"
                                 placeholder="Your full name"
                                 required
                                 autoFocus
@@ -65,7 +65,7 @@ const Createaccount = () => {
                             <input
                                 type="email"
                                 id="email"
-                                className="w-full px-4 py-2 text-sm md:text-lg border rounded-md focus:outline-none focus:border-indigo-500"
+                                className="w-full px-4 py-2 text-xs md:text-sm border rounded-md focus:outline-none focus:border-indigo-500"
                                 placeholder="Email (i.e. 123@gmail.com)"
                                 required
                                 name="email"
