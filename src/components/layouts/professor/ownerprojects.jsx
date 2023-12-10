@@ -86,19 +86,19 @@ const CreateAccount = () => {
       });
 
       const modal = document.getElementById("myModal");
-      modal.style.display = "none";
-    }
-  };
+          modal.style.display = "none";
+        }
+      };
 
-  const openModal = () => {
-    const modal = document.getElementById("myModal");
-    modal.style.display = "block";
-  };
+      const openModal = () => {
+        const modal = document.getElementById("myModal");
+        modal.style.display = "block";
+      };
 
-  const closeModal = () => {
-    const modal = document.getElementById("myModal");
-    modal.style.display = "none";
-  };
+      const closeModal = () => {
+        const modal = document.getElementById("myModal");
+        modal.style.display = "none";
+      };
 
   const download = async (e) => {
     e.preventDefault();
@@ -110,11 +110,11 @@ const CreateAccount = () => {
   };
   
   return (
-    <div class="container-fluid1 flex justify-center items-center">
-      <div class="text-left" id="text-left">
-        <nav class="backgr" style={{ paddingRight: '20px' }}>
+    <div class="flex">
+      <div class="text-left">
+        <nav class="shadow-md">
           <div class="max-w-7xl mx-auto px-2 sm:px-10 lg:px-200">
-            <div class="relative flex items-center justify-between h-16">
+            <div class="flex items-center justify-between h-20">
               <div class="flex items-center justify-start" style={{ marginLeft: '7vw' }}>
                 <div class="input-group" className="searchdiv1">
                   <i class="fas fa-search text-xl h-full pr-4 "></i>
@@ -122,12 +122,11 @@ const CreateAccount = () => {
                     <input
                       id="search-input"
                       type="search"
-                      class="form-control"
+                      class="form-control w-[40%] md:w-[30%] text-center"
                       name="search"
                       placeholder="Search by Title name"
                       value={search}
                       onChange={detectChanges}
-                      style={{ width: '30vw', textAlign: 'center' }}
                     />
                   </div>
                 </div>
@@ -174,9 +173,9 @@ const CreateAccount = () => {
           </div>
         </nav>
 
-        <div className="allprojectslinkdiv">
-          <div id="myBtn" className="allprojectslink">
-            <h1 className="p-0 md:p-1">+ </h1>NEW PROJECT
+        <div className="flex justify-end m-3">
+          <div id="myBtn" className="rounded-sm md:rounded-md bg-red-700 text-white font-medium cursor-pointer hover:bg-red-600" onClick={openModal}>
+            <div className="p-2 text-lg md:text-xl">NEW PROJECT</div>
           </div>
         </div>
 
@@ -191,19 +190,18 @@ const CreateAccount = () => {
               style={{ display: 'flex', marginLeft: '5vw', fontWeight: '600', position: 'absolute', top: '15vh' }}
             >
               <div
-                className="text-sm md:text-lg pr-2"
+                className="text-xs md:text-lg pr-2"
                 style={{ textAlign: 'center', fontWeight: '600' }}
               >
                 Download List of Interested Students
               </div>
               <i
-                class="fa-solid fa-download text-4xl"
+                class="fa-solid fa-download text-2xl md:text-4xl"
                 onClick={download}
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'center',
-                  padding: '0px',
                   cursor: 'pointer',
                 }}
               ></i>
@@ -271,8 +269,8 @@ const CreateAccount = () => {
             {/* modal on new project */}
               <div id="myModal" class="modal2">
                 <div class="modal-content2">
-                  <span class="close" style={{"justify-content":"start","height":"50px"}}>&times;</span>
-                  <form class="w-100 mx-auto bg-white px-8 mb-4" onSubmit={submit}>
+                  <span class="close" onClick={closeModal} style={{"justify-content":"start","height":"50px"}}>&times;</span>
+                  <form class="w-full mx-auto bg-white px-4 md:px-8 mb-4" onSubmit={submit}>
                     <div class="mb-4">
                       <label class="block text-gray-600 font-bold mb-2 text-sm d-flex justify-content-start items-center" for="username">
                         <span class="material-symbols-outlined pr-1">

@@ -204,9 +204,9 @@ const Projectcard = () =>{
    
 
     return(
-        <div className='projectcardmaindivv1 font-Manrope'>
+        <div className='w-full px-2' style={{'fontFamily':'Manrope'}}>
           <div class="px-6 py-2 rounded-lg border-2 bg-gray-100">
-            <div class="card-body">
+            <div class="card-body py-1">
                 <h4 class="flex items-center justify-center font-Manrope bg-gray-400 rounded-sm py-1 px-2"><i class="fa-solid fa-book text-xl" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>{project[0].title}</h4>
                 <h5 class="card-subtitle text-muted ">
                   <div className='flex items-center'><span class="material-symbols-outlined pr-1">
@@ -218,7 +218,7 @@ const Projectcard = () =>{
                 <hr/>
                 <p class="card-text pb-0 md:pb-1"><h5 className='flex items-center pb-0 mb-0'><span class="material-symbols-outlined pr-1">
                 school
-                </span><div className='font-semibold text-sm md:text-lg '>Specialization</div></h5><div className='pl-0 text-sm pl-1'>{project[0].specialization}</div></p>
+                </span><div className='font-semibold text-sm md:text-lg '>Specialization</div></h5><div className='text-sm pl-1'>{project[0].specialization}</div></p>
                 {/* <h6 class="card-name text-sm  flex">Created on {project[0].creation_date} <div className='pl-1 text-xs my-auto'>(day, month, year)</div> </h6>
                 <h6 class="card-name text-sm">Created at {project[0].creation_time} </h6> */}
                   
@@ -237,9 +237,9 @@ const Projectcard = () =>{
                   :
                   isRegistered === 1
                   ?
-                  <button id="myBtn" className='disabled cursor-not-allowed mx-auto flex justify-center items-center no-underline w-32 rounded-md text-white p-1 font-semibold mt-2 hover:bg-red-700 text-xl' disabled style={{'backgroundColor':'#EC2D01'}}>De-Register</button>
+                  <button id="myBtn" className='disabled cursor-not-allowed mx-auto flex justify-center items-center no-underline w-32 rounded-md text-white p-1 font-semibold mt-2 hover:bg-red-700 text-sm md:text-lg' disabled style={{'backgroundColor':'#EC2D01'}}>De-Register</button>
                   :
-                  <button id="myBtn" className='mx-auto flex justify-center items-center no-underline w-32 rounded-md text-white p-1 font-semibold text-xl mt-2 bg-yellow-600 hover:bg-yellow-700' onClick={click}>Register</button>
+                  <button id="myBtn" className='mx-auto flex justify-center items-center no-underline w-24 md:w-32 rounded-md text-white p-1 font-semibold text-sm md:text-lg py-1 mt-2 bg-yellow-600 hover:bg-yellow-700' onClick={click}>Register</button>
                 }
                 
                 

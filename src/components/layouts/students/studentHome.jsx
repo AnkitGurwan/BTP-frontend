@@ -3,14 +3,13 @@ import { Link, useLocation, useSearchParams, useNavigate } from 'react-router-do
 import ItemContext from '../../../context/project/ItemContext';
 import Projectcard from './studentprojectcard';
 import AuthContext from '../../../context/authentication/AuthContext';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
+import Header from './navbarStudent'
 
 const Createaccount = (req, res) => {
   const {
     allProjects,
-    logout,
     getAllStudent,
     createStudent,
     checkRegisteredFunc,
@@ -41,23 +40,25 @@ const Createaccount = (req, res) => {
 
   //check student allowed or not to access the page
   const funcAllowed = () => {
-    if (localStorage.getItem('studRoll')) {
-      if (
-        `${process.env.REACT_APP_ROLL_LOW}` <= localStorage.getItem('studRoll') &&
-        localStorage.getItem('studRoll') <= `${process.env.REACT_APP_ROLL_HIGH}`
-      ) {
-        setAllowed(true);
-        setLoading(false);
-      } else {
-        setLoading(false);
-        setAllowed(false);
-      }
-    } else {
-      Navigate('/studentlogin');
-      toast.error('Please login to access', {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    }
+    // if (localStorage.getItem('studRoll')) {
+    //   if (
+    //     `${process.env.REACT_APP_ROLL_LOW}` <= localStorage.getItem('studRoll') &&
+    //     localStorage.getItem('studRoll') <= `${process.env.REACT_APP_ROLL_HIGH}`
+    //   ) {
+    //     setAllowed(true);
+    //     setLoading(false);
+    //   } else {
+    //     setLoading(false);
+    //     setAllowed(true);
+    //   }
+    // } else {
+    //   Navigate('/studentlogin');
+    //   toast.error('Please login to access', {
+    //     position: toast.POSITION.TOP_CENTER,
+    //   });
+    // }
+    setAllowed(true)
+    setLoading(false)
   };
 
   var count = '';
@@ -111,40 +112,12 @@ const Createaccount = (req, res) => {
     setSearch(e.target.value);
   };
 
-  const newfunc = async () => {
-    localStorage.clear('studName', 'studId', 'studRoll', 'studJob');
-    await logout();
-  };
 
 
   return (
     <div>
       {/* different header for student */}
-      <div className='footer2maindiv'>
-        <div className="navbar-brand float-left">
-          <img
-            className="logoiitg"
-            style={{
-              width: "3.6rem",
-              marginBottom: "0.1rem",
-              marginRight: "0.5rem",
-            }}
-            src="https://iitg.ac.in/mech/static/images/logo.png"
-            alt="iitg logo"
-          />
-        </div>
-        <div className='footer2span1'>
-          <div className='footer2div1'>Indian Institute of Technology</div>
-          <div className='footer2div2'>Guwahati</div>
-        </div>
-  
-        <i className='footer2i' class="fa-solid fa-right-from-bracket"></i>
-        <div className='footer2span2'>
-          <Link className='footer2a' to={'/'} onClick={newfunc}>
-            LogOut
-          </Link>
-        </div>
-      </div>
+      <Header/>
   
       {loading ? (
         <div class="flex items-center justify-center h-screen">
@@ -153,7 +126,7 @@ const Createaccount = (req, res) => {
       ) : (
         <div>
           {allowed ? (
-            <div className='studentallprojectdivmain'>
+            <div className=''>
               <nav class="bg-gray-800 py-1 pr-0 md:pr-12">
                 <div class="max-w-7xl mx-auto px-0 lg:px-200">
                   <div class="relative flex items-center justify-between h-12">
@@ -184,33 +157,16 @@ const Createaccount = (req, res) => {
                         </div>
                       </div>
                     </div>
-                    <div class=" absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-4 sm:pr-0">
+                    <div class="flex items-center">
                       {!checkRegistered ? (
                         <div
-                          className='w-28 px-1 md:w-36 text-xs md:text-lg py-1 md:py-1'
-                          style={{
-                            backgroundColor: "red",
-                            textAlign: "center",
-                            borderRadius: "3px",
-                            color: "white",
-                            marginRight: "1vw",
-                            fontWeight: "600",
-                          }}
+                          className='text-xs md:text-lg p-1 bg-red-600 font-medium text-center text-white rounded-md mr-4'
                         >
                           Not Alloted
                         </div>
                       ) : (
                         <div
-                          className='w-28 px-1 md:w-32 text-xs md:text-md md:py-1'
-                          style={{
-                            backgroundColor: "green",
-                            textAlign: "center",
-                            borderRadius: "3px",
-                            fontSize: "larger",
-                            color: "white",
-                            marginRight: "1vw",
-                            fontWeight: "600",
-                          }}
+                          className='text-xs md:text-lg p-1 bg-green-600 font-medium text-center text-white rounded-md mr-4'
                         >
                           Alloted
                         </div>
@@ -302,7 +258,7 @@ const Createaccount = (req, res) => {
                           className='flex md:hidden'
                           onClick={() => setMobileMenu(true)}
                         >
-                          <span class="material-symbols-outlined text-white text-xl ml-12 mr-2">
+                          <span class="material-symbols-outlined text-white text-xl md:ml-12 mr-2">
                             menu_open
                           </span>
                         </div>
@@ -336,18 +292,18 @@ const Createaccount = (req, res) => {
                 </div>
               </nav>
   
-              <div class="split px-12 py-1 bg-gray-800 text-white">
+              <div class="split px-8 py-2 bg-gray-800 text-white">
                 <div>
                   <h1 class="heading  light text-2xl md:text-3xl">Welcome,</h1>
                   <h1 class="heading bold light text-2xl md:text-3xl">
                     {userName}
                   </h1>
-                  <p class="text-lg md:text-lg">B.Tech. in Mechanical Engineering</p>
+                  <p class="text-sm md:text-lg">B.Tech. in Mechanical Engineering</p>
                 </div>
               </div>
   
               {/* description */}
-              <div class="container card w3-white" style={{ marginTop: "3vh" }}>
+              <div class="container card w3-white" style={{ marginTop: "3vh",'fontFamily':'Manrope'}}>
                 <br />
                 <h2 class=" ">
                   <i class="fa fa-book fa-fw"></i> BTP Phase I
@@ -357,14 +313,14 @@ const Createaccount = (req, res) => {
                 <p>No description provided.</p>
                 <div class="container"></div>
               </div>
-              <div class="roundbox sidebox borderTopRound rounded-md mt-4 ml-4 p-1 md:p-2 md:ml-12 w-2/3 md:w-1/3 bg-gray-300">
-                <div class="caption titled text-lg font-bold">
+              <div class="roundbox sidebox borderTopRound rounded-md mt-4 ml-4 md:p-2 md:ml-12 w-2/3 md:w-1/3 bg-gray-300 p-2" style={{'fontFamily':'Manrope'}}>
+                <div class="caption titled text-sm md:text-lg font-bold">
                   → Pay attention
                   <div class="top-links"></div>
                 </div>
                 <div>
                   <div style={{ textAlign: "center" }}>
-                    <div class="contest-state-phase font-medium">
+                    <div class="text-sm md:text-lg">
                       Deadline to Register is 31 January, 2024 EOD
                     </div>
                     <br />

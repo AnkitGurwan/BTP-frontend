@@ -64,20 +64,20 @@ const Specificprojectcard=()=> {
       }
 
      return(
-        <div className='readmorepage'>
-          <div className="flex ml-1 mt-1">
-            <Link className='text-3xl ml-5' to={`/owner`}><i class="fa-sharp fa-solid fa-arrow-left fa-lg"></i></Link>
+        <div className='my-2' style={{'fontFamily':'Manrope'}}>
+          <div className="flex">
+            <Link className='text-xl md:text-3xl ml-4' to={`/owner`}><i class="fa-sharp fa-solid fa-arrow-left fa-lg"></i></Link>
           </div>
 
-          <div className="flex ">
-            <div className='w-1/2 ml-20 mr-4 px-0'>
+          <div className="flex flex-col md:flex-row mt-2">
+            <div className='w-full md:w-1/2 md:ml-20 md:mr-4 px-2'>
               { items.filter((project) => project._id===id).map((projects,i) => { 
                 return (<Projectcardspecific key={i} project={projects}/>)})}
             </div>
 
-            <div className="w-1/2 flex flex-col items-center border-2 rounded-lg ml-4 mr-16 my-2 py-2 border-4">
+            <div className="md:w-1/2 flex flex-col items-center border-4 rounded-lg md:ml-4 md:mr-16 my-2 mx-2 p-2">
                 <div>
-                  <div className="font-medium text-center text-lg px-4 pb-2">Currently registered students :</div>
+                  <div className="font-medium text-center text-sm md:text-lg px-4 pb-2">Currently registered students :</div>
                   {
                     loading
                     ?
@@ -120,7 +120,7 @@ const Specificprojectcard=()=> {
                         //     )
                       })
                     :
-                    <div className="px-3 normal-case">No one has registered for this project (Refresh to reflect any changes)</div>}
+                    <div className="px-3 normal-case text-sm md:text-lg">No one has registered for this project (Refresh to reflect any changes)</div>}
                   </div>}
                 </div>
               </div>

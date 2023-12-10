@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ItemContext from '../../../context/project/ItemContext';
 
 function Footer2(){
+    const {
+        logout
+      } = useContext(ItemContext);
 
-    const newfunc=()=>{
-            localStorage.clear('btpToken');
+    const newfunc = async () => {
+            localStorage.clear('studName', 'studId', 'studRoll', 'studJob');
+            await logout();
             toast.success('Logged out successfully', {
                 position: toast.POSITION.TOP_CENTER
             });
         };
         
     return(
-        <div className='w-full bg-blue-700 text-white flex justify-between items-center py-1 md:px-6'>
+        <div className='w-full bg-blue-700 text-white flex justify-between items-center py-2 md:px-6'>
             <div class="navbar-brand float-left flex items-center">
               <img class="h-10 md:h-16 w-10 md:w-16" src="https://iitg.ac.in/mech/static/images/logo.png" alt='iitg logo'/>
                 <span className='md:flex'>

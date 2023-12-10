@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ItemContext from '../../../context/project/ItemContext';
-import ProjectCard from './projectcard2';
+import ProjectCard from './projectcard';
 import { useSelector } from 'react-redux';
 
 const ProfAllProject = () => {
@@ -42,24 +42,23 @@ const ProfAllProject = () => {
   };
 
   return (
-    <div class="container-fluid1 text-center">
+    <div class="text-center">
       <div class="text-left" id="text-left">
-        <nav class="backgr" style={{ "paddingRight": "20px" }}>
-          <div class="max-w-7xl mx-auto px-2 sm:px-10 lg:px-200">
+        <nav class="shadow-md" >
+          <div class="py-2 mx-auto px-2 sm:px-10 lg:px-200">
             <div class="relative flex items-center justify-between h-16">
               <div class="flex items-center justify-start" style={{ "marginLeft": "7vw" }}>
-                <div class="input-group" className='searchdiv1'>
-                  <i class="fas fa-search text-xl" style={{ "color": "white", "paddingRight": "15px", "height": "100%" }}></i>
+              <div class="input-group" className="searchdiv1">
+                  <i class="fas fa-search text-xl h-full pr-4 "></i>
                   <div class="form-outline">
                     <input
                       id="search-input"
                       type="search"
-                      class="form-control"
-                      name='search'
+                      class="form-control w-[40%] md:w-[30%] text-center"
+                      name="search"
                       placeholder="Search by Title name"
                       value={search}
                       onChange={detectChanges}
-                      style={{ "width": "40vw", "textAlign": "center" }}
                     />
                   </div>
                 </div>

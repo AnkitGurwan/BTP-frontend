@@ -29,20 +29,22 @@ const Specificprojectcard=()=> {
     const items = useSelector(state => state.allProjects.allProjects);
 
     const funcAllowed = ()=>{
-      if(localStorage.getItem('studRoll'))
-      {
-        if(210103001 <= localStorage.getItem('studRoll') && localStorage.getItem('studRoll') <= 210103140){
-            setAllowed(true);
-        }
-        else setAllowed(false);
-      }
-      else 
-      {
-          Navigate("/studentlogin");
-          (toast.error('Please login to access', {
-            position: toast.POSITION.TOP_CENTER
-        }));
-      } 
+      // if(localStorage.getItem('studRoll'))
+      // {
+      //   if(210103001 <= localStorage.getItem('studRoll') && localStorage.getItem('studRoll') <= 210103140){
+      //       setAllowed(true);
+      //   }
+      //   else setAllowed(false);
+      // }
+      // else 
+      // {
+      //     Navigate("/studentlogin");
+      //     (toast.error('Please login to access', {
+      //       position: toast.POSITION.TOP_CENTER
+      //   }));
+      // } 
+      setAllowed(true)
+      setLoading(false)
     }
 
     const getItem=async ()=>{
@@ -62,27 +64,27 @@ const Specificprojectcard=()=> {
     
     
      return(
-        <div className='studentspecificdiv'>
+        <div className=''>
           {allowed?
           <div>
             <header class="bg-gray-800 text-white py-2 flex items-center justify-center">
-            <Link className='goback' to={`/studentallproject`}><i class="fa-sharp fa-solid fa-arrow-left fa-lg pl-2" /></Link>
+            <Link className='' to={`/studentallproject`}><i class="fa-sharp fa-solid fa-arrow-left fa-lg pl-2 text-xl md:text-3xl" /></Link>
               
               <div class="container mx-auto px-2">
-                <h1 class="text-xl  font-bold mt-2 text-center md:mr-20 font-Manrope">Kindy click on 'Register' if you are interested</h1>
+                <h1 class="text-sm md:text-xl font-bold mt-2 text-center md:mr-20 font-Manrope">Kindy click on 'Register' if you are interested</h1>
               </div>
             </header>
             
-            <div className="flex my-3 w-full">
-              <div className="w-full mr-12">
+            <div className="flex my-3 w-full mx-auto">
+              <div className="mx-auto">
                 {Store.map((detail,i)=>{return (<Ownerprojectcard key={i} detail={detail} />)})}
               </div>
             </div>
             
-            <div className="flex">
-              <div className='w-3/4 justify-center pl-16'>{items.filter((project)=>project._id === id).map((projects,i)=>{return (<Projectcardspecific key={i} project={projects} idtoken={idtoken}/>)})}</div>
+            <div className="flex flex-col md:flex-row">
+              <div className='flex w-full justify-center md:pl-16 my-2'>{items.filter((project)=>project._id === id).map((projects,i)=>{return (<Projectcardspecific key={i} project={projects} idtoken={idtoken}/>)})}</div>
 
-              <div className="w-1/4 flex flex-col items-center border-2 rounded-lg ml-4 mr-16 py-2">
+              <div className="md:w-1/4 flex flex-col items-center border-2 rounded-lg my-2 mx-2 md:ml-4 py-2">
                 <div>
                   <div className="font-medium text-lg px-3">Currently registered students :</div>
                   {
@@ -99,7 +101,7 @@ const Specificprojectcard=()=> {
                     studentRegisteredList.map((individual) => {
                     return <div className="text-center text-xs bg-gray-200">{individual}</div>})
                     :
-                    <div className="px-3">No one has registered for this project (Refresh to reflect any changes)</div>}
+                    <div className="px-2 text-sm normal-case">No one has registered for this project (Refresh to reflect any changes)</div>}
                   </div>}
                 </div>
               </div>
