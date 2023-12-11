@@ -351,30 +351,30 @@ const Createaccount = (req, res) => {
                     <hr class="my-4" />
                     <div class="grid grid-cols-2 gap-x-20 md:gap-x-2 gap-y-2">
                       <div>
-                        <label class="text-sm font-medium text-gray-700">Name:</label>
-                        <p class="text-lg  font-semibold font-mono tracking-tighter md:tracking-tight">
+                        <label class="text-sm md:text-lg font-medium text-gray-700">Name:</label>
+                        <p class="text-sm md:text-lg  font-semibold font-mono tracking-tighter md:tracking-tight">
                           {flag2 ? partner[0].name : "N/A"}
                         </p>
                       </div>
                       <div>
-                        <label class="text-sm font-medium text-gray-700 pl-6 md:pl-12">
+                        <label class="text-sm md:text-lg font-medium text-gray-700 pl-5 md:pl-12">
                           Roll No:
                         </label>
-                        <p class="text-lg font-semibold font-mono pl-6 md:pl-12">
+                        <p class="text-sm md:text-lg font-semibold font-mono pl-5 md:pl-12">
                           {flag2 ? partner[0].rollNum : "N/A"}
                         </p>
                       </div>
                       <div>
-                        <label class="text-sm font-medium text-gray-700 ">Email:</label>
-                        <p class="text-lg font-semibold font-mono tracking-tighter md:tracking-tight">
+                        <label class="text-sm md:text-lg font-medium text-gray-700 ">Email:</label>
+                        <p class="text-sm md:text-lg font-semibold font-mono tracking-tighter md:tracking-tight">
                           {flag2 ? partner[0].email : "N/A"}
                         </p>
                       </div>
                       <div>
-                        <label class="text-sm font-medium text-gray-700 pl-6 md:pl-12">
+                        <label class="text-sm font-medium text-gray-700 pl-5 md:pl-12">
                           Job:
                         </label>
-                        <p class="text-lg font-semibold font-mono pl-6 md:pl-12 tracking-tighter md:tracking-tight">
+                        <p class="text-lg font-semibold font-mono pl-5 md:pl-12 tracking-tighter md:tracking-tight">
                           BTech
                         </p>
                       </div>
