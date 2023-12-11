@@ -6,7 +6,7 @@ const Header = () => {
             <div class="navbar-brand float-left flex items-center md:mx-2">
               <img class="h-8 md:h-20 w-8 md:w-20" src="https://iitg.ac.in/mech/static/images/logo.png" alt='iitg logo'/>
                 <span className='flex flex-col md:mx-8'>
-                    <div className='text-white text-xs md:text-3xl font-bold'>
+                    <div className='text-white text-xs md:text-3xl font-medium md:font-bold'>
                         Department of Mechanical Engineering
                    </div>
                     <div className='text-xs md:text-2xl font-medium md:font-semibold'>Indian Institute of Technology, Guwahati</div>
@@ -14,7 +14,7 @@ const Header = () => {
             </div> 
             
             
-            <span className='flex'>
+            <span className='flex flex-col md:flex-row'>
                 <a href='https://iitg.ac.in/mech/academics/undergraduate/latest/sem-5/btp-phase-i/' className='text-white no-underline text-xs md:text-xl sm:mx-2 md:mx-6 font-normal md:font-medium'>BTP Phase 1</a>
                  <a href='https://iitg.ac.in/mech/academics/undergraduate/latest/sem-5/' className='text-white no-underline text-xs md:text-xl md:mx-4 font-normal md:font-medium'>Sem 5</a>
             </span>

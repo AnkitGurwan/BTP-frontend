@@ -41,7 +41,7 @@ const ForgotPassword = () => {
             <div className="flex justify-center mx-4 mt-8 md:mt-0">
                 <div className='w-full md:w-1/3 shadow-md rounded-lg border p-2 md:p-3'>
                     <div className='flex w-full py-2 px-2'>
-                        <span className='text-center font-medium md:font-bold text-sm md:text-xl mx-1 py-2 w-full bg-blue-400 text-white'>Enter your Gmail</span>
+                        <span className='text-center font-medium md:font-bold text-sm md:text-xl mx-1 py-2 w-full bg-blue-400 text-white'>Forgot Password</span>
                         <span className='text-center py-2 text-sm md:text-xl mx-1 cursor-pointer w-full border text-gray-600 font-medium md:font-bold flex items-center justify-center' onClick={redirectToLogin}>Go Back</span>
                     </div>
                     <div className="w-full p-2 flex flex-col justify-center items-center ">
@@ -59,7 +59,7 @@ const ForgotPassword = () => {
                             onChange={onChangeHandler}
                         />
                         </div>
-                        <button className='bg-green-600 hover:bg-green-700 w-full py-2 my-2 rounded-md font-semibold text-white text-sm md:text-lg' type="submit">Send</button>
+                        <button className='bg-green-600 hover:bg-green-700 w-full mt-4 py-2 my-2 rounded-md font-semibold text-white text-sm md:text-lg' type="submit">Send</button>
                         <div className='px-2 text-center text-red-600 pt-2 md:pt-3'>You will receive an email on this Email account to change your password.</div>
                     </form>
                     </div>

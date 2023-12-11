@@ -374,7 +374,7 @@ const Createaccount = (req, res) => {
                         <label class="text-sm font-medium text-gray-700 pl-5 md:pl-12">
                           Job:
                         </label>
-                        <p class="text-lg font-semibold font-mono pl-5 md:pl-12 tracking-tighter md:tracking-tight">
+                        <p class="text-sm md:text-lg font-semibold font-mono pl-5 md:pl-12 tracking-tighter md:tracking-tight">
                           BTech
                         </p>
                       </div>
