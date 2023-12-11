@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthContext from '../../../context/authentication/AuthContext';
 import { useSelector } from 'react-redux';
+import '../styles.css'
 
 const CreateAccount = () => {
   const { Projectspecific, createProject } = useContext(ItemContext);

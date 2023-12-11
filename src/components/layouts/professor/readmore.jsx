@@ -3,6 +3,7 @@ import { useParams,Link } from 'react-router-dom';
 import ItemContext from '../../../context/project/ItemContext';
 import Projectcardspecific from "./projectcardspecific";
 import { useSelector } from 'react-redux';
+import '../styles.css'
 
 
 const Specificprojectcard=()=> {
@@ -70,12 +71,12 @@ const Specificprojectcard=()=> {
           </div>
 
           <div className="flex flex-col md:flex-row mt-2">
-            <div className='w-full md:w-1/2 md:ml-20 md:mr-4 px-2'>
+            <div className='w-full md:w-2/3 md:ml-16 md:mr-4 px-2'>
               { items.filter((project) => project._id===id).map((projects,i) => { 
                 return (<Projectcardspecific key={i} project={projects}/>)})}
             </div>
 
-            <div className="md:w-1/2 flex flex-col items-center border-4 rounded-lg md:ml-4 md:mr-16 my-2 mx-2 p-2">
+            <div className="md:w-1/3 flex flex-col items-center border-4 rounded-lg md:ml-4 md:mr-16 my-2 mx-2 p-2">
                 <div>
                   <div className="font-medium text-center text-sm md:text-lg px-4 pb-2">Currently registered students :</div>
                   {

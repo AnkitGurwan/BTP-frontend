@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import Header from '../layouts/interfacePageHeader';
 import ItemContext from '../../context/project/ItemContext';
 import { Link } from 'react-router-dom';
+import '../layouts/styles.css'
 
 
 const Interfacepage = () => {

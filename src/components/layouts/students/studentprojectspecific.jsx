@@ -8,6 +8,7 @@ import Projectcardspecific from "./studentspecificprojectcard";
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../styles.css'
 
 const Specificprojectcard=()=> {
     const {allProjects,details,getSingleProject, getInterestedStudents} = useContext(ItemContext);

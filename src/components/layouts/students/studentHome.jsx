@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import Header from './navbarStudent'
 import { toast } from 'react-toastify';
+import '../styles.css'
 
 const Createaccount = (req, res) => {
   const {
