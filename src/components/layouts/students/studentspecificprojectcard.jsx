@@ -126,7 +126,7 @@ const Projectcard = () =>{
           // document.getElementById("myBtn").style.width='140px'
           
           if(document.getElementById("myBtn").innerText==="Register"){
-          const x=await selectproject(id,user1email,user2email);
+          const x=await selectproject(id,localStorage.getItem('accessToken'),user2email);
 
           //check
           if(x===200){
@@ -205,20 +205,20 @@ const Projectcard = () =>{
 
     return(
         <div className='w-full px-2' style={{'fontFamily':'Manrope'}}>
-          <div class="px-6 py-2 rounded-lg border-2 bg-gray-100">
+          <div class="px-4 py-2 rounded-lg border-2 bg-gray-100">
             <div class="card-body py-1">
-                <h4 class="flex items-center justify-center font-Manrope bg-gray-400 rounded-sm py-1 px-2"><i class="fa-solid fa-book text-xl" style={{"backgroundColor":"transparent","paddingRight":"0.5rem"}}></i>{project[0].title}</h4>
-                <h5 class="card-subtitle text-muted ">
+                <div class="flex items-center justify-center font-Manrope tracking-tight leading-5 text-lg md:text-xl bg-gray-400 rounded-sm py-2 font-semibold md:font-bold"><i class="fa-solid fa-book text-xl px-2"></i>{project[0].title}</div>
+                <h5 class="card-subtitle text-muted pt-2">
                   <div className='flex items-center'><span class="material-symbols-outlined pr-1">
                 person
-                </span><div className='text-sm'>{project[0].co_supervisor}</div></div><h6 className='text-sm'>(co-supervisor)</h6>
+                </span><div className='text-xs md:text-sm'>{project[0].co_supervisor}</div></div><h6 className='text-xs md:text-sm'>(co-supervisor)</h6>
                 </h5>
                 <hr/>
-                <p class="card-text font-Manrope pl-2">{project[0].brief_abstract}</p>
+                <p class="text-xs md:text-lg font-Manrope md:pl-2">{project[0].brief_abstract}</p>
                 <hr/>
                 <p class="card-text pb-0 md:pb-1"><h5 className='flex items-center pb-0 mb-0'><span class="material-symbols-outlined pr-1">
                 school
-                </span><div className='font-semibold text-sm md:text-lg '>Specialization</div></h5><div className='text-sm pl-1'>{project[0].specialization}</div></p>
+                </span><div className='font-semibold text-xs md:text-lg '>Specialization</div></h5><div className='text-xs md:text-sm pl-1'>{project[0].specialization}</div></p>
                 {/* <h6 class="card-name text-sm  flex">Created on {project[0].creation_date} <div className='pl-1 text-xs my-auto'>(day, month, year)</div> </h6>
                 <h6 class="card-name text-sm">Created at {project[0].creation_time} </h6> */}
                   

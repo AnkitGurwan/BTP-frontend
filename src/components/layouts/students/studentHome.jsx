@@ -15,6 +15,7 @@ const Createaccount = (req, res) => {
     getAllStudent,
     createStudent,
     checkRegisteredFunc,
+    logout
   } = useContext(ItemContext);
   const { getToken } = useContext(AuthContext);
   const students = useSelector((state) => state.student.allStudents);
@@ -77,11 +78,20 @@ const Createaccount = (req, res) => {
     if (localStorage.getItem('studName') === null && code)
       await getToken(code);
 
-    const userId = localStorage.getItem('studId');
-    const x = await checkRegisteredFunc(userId);
+    const accessToken = localStorage.getItem('accessToken');
+    // alert(accessToken)
+    const x = await checkRegisteredFunc(accessToken);
 
     if (x === 200) setCheckRegistered(true);
-    else setCheckRegistered(false);
+    else if( x===400) setCheckRegistered(false);
+    else if(x===401)
+    {
+      localStorage.clear('studName', 'studId', 'studRoll', 'studJob','accessToken');
+      await logout();
+      toast.success('Session Expired, Please Login again', {
+          position: toast.POSITION.TOP_CENTER
+      });
+    }
 
     await getAllStudent();
 

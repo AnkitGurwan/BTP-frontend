@@ -162,6 +162,7 @@ const AuthState = (props) => {
         localStorage.setItem('studId',json.studInformation.mail);
         localStorage.setItem('studRoll',json.studInformation.surname);
         localStorage.setItem('studJob',json.studInformation.jobTitle);
+        localStorage.setItem('accessToken',json.accessToken);
     }
     
 

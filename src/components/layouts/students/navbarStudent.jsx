@@ -10,7 +10,7 @@ function Footer2(){
       } = useContext(ItemContext);
 
     const newfunc = async () => {
-            localStorage.clear('studName', 'studId', 'studRoll', 'studJob');
+            localStorage.clear('studName', 'studId', 'studRoll', 'studJob','accessToken');
             await logout();
             toast.success('Logged out successfully', {
                 position: toast.POSITION.TOP_CENTER

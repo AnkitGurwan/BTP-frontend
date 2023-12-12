@@ -118,9 +118,10 @@ const ItemState=(props)=>{
             return response.status;
     };
 
-    const selectproject=async(id,user,email)=>{       
-            const response = await fetch(`${url}/project/projectaddition/${id}/${user}/${email}`,  {
+    const selectproject = async (id,accessToken,partner)=>{       
+            const response = await fetch(`${url}/project/projectaddition/${id}/${accessToken}/${partner}`,  {
                 method: 'GET',
+                credentials:'include',
                 headers: {
                     'Content-Type': "application/json"
                 }
@@ -128,8 +129,7 @@ const ItemState=(props)=>{
             return response.status
     };
 
-    const allotProject = async(id,user,friend)=>{     
-        alert("hii")  
+    const allotProject = async(id,user,friend)=>{   
             const response = await fetch(`${url}/project/allotProject/${id}/${user}/${friend}`,  {
                 method: 'GET',
                 headers: {
@@ -164,8 +164,7 @@ const ItemState=(props)=>{
             return response.status;
     };
 
-    const getInterestedStudents = async (id) => {     
-        // alert(id)     
+    const getInterestedStudents = async (id) => {    
             const response = await fetch(`${url}/project/getInterestedStudents/${id}`, {
                     method: 'GET',
                     headers: {
@@ -173,7 +172,6 @@ const ItemState=(props)=>{
                     }
                 })            
             const json=await response.json();
-            // alert(json)
             dispatch(setInterestedStudents(json));    
             return response.status;
     };
@@ -204,9 +202,9 @@ const ItemState=(props)=>{
     }
 
     const checkRegisteredFunc = async (email) => {
-        // alert(email)
         const response = await fetch(`${url}/project/checkRegistered/${email}`, {
             method: 'GET',
+            credentials:'include',
             headers: {
                 'Content-Type': "application/json"
             }
