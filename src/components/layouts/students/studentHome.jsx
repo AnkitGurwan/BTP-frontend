@@ -25,6 +25,7 @@ const Createaccount = (req, res) => {
   const [loading, setLoading] = useState(true);
   const [checkRegistered, setCheckRegistered] = useState(false);
   const Navigate = useNavigate();
+  const [count,setCount] = useState('');
 
   var items = useSelector((state) => state.allProjects.allProjects);
 
@@ -33,16 +34,17 @@ const Createaccount = (req, res) => {
     return student._id;
   });
 
-  var flag2 = 0;
+  var flag = false;
   const partner = students
     .filter((student) => student.partner === pId[0])
     .map((student, i) => {
-      flag2 = 1;
+      flag = true;
       return student;
     });
 
   //check student allowed or not to access the page
   const funcAllowed = () => {
+    // alert('true')
     if (localStorage.getItem('studRoll')) {
       if (
         `${process.env.REACT_APP_ROLL_LOW}` <= localStorage.getItem('studRoll') &&
@@ -64,8 +66,6 @@ const Createaccount = (req, res) => {
     // setLoading(false)
   };
 
-  var count = '';
-  var flag = 0;
   
   const userName = localStorage.getItem('studName');
   const userId = localStorage.getItem('studId');
@@ -81,8 +81,12 @@ const Createaccount = (req, res) => {
     const accessToken = localStorage.getItem('accessToken');
     // alert(accessToken)
     const x = await checkRegisteredFunc(accessToken);
+    console.log("x",x)
 
-    if (x === 200) setCheckRegistered(true);
+    if (x[0] === 200) {
+      setCount(x[1]);
+      setCheckRegistered(true);
+    }
     else if( x===400) setCheckRegistered(false);
     else if(x===401)
     {
@@ -104,17 +108,6 @@ const Createaccount = (req, res) => {
 
     funcAllowed();
   };
-
-  {
-    items.filter((project) =>
-      project.intrestedPeople.map((emailcheck) => {
-        if (emailcheck === userId) {
-          count = project._id;
-          flag = 1;
-        }
-      })
-    );
-  }
 
   useEffect(() => {
     getItem();
@@ -186,7 +179,7 @@ const Createaccount = (req, res) => {
                         </div>
                       )}
   
-                      {flag === 0 ? (
+                      {!checkRegistered ? (
                         <div className='hidden md:flex'>
                           <div
                             class="text-gray-500 px-3 py-2 rounded-md text-xl font-x-large"
@@ -363,7 +356,7 @@ const Createaccount = (req, res) => {
                       <div>
                         <label class="text-sm md:text-lg font-medium text-gray-700">Name:</label>
                         <p class="text-sm md:text-lg  font-semibold font-mono tracking-tighter md:tracking-tight">
-                          {flag2 ? partner[0].name : "N/A"}
+                          {flag ? partner[0].name : "N/A"}
                         </p>
                       </div>
                       <div>
@@ -371,13 +364,13 @@ const Createaccount = (req, res) => {
                           Roll No:
                         </label>
                         <p class="text-sm md:text-lg font-semibold font-mono pl-5 md:pl-12">
-                          {flag2 ? partner[0].rollNum : "N/A"}
+                          {flag ? partner[0].rollNum : "N/A"}
                         </p>
                       </div>
                       <div>
                         <label class="text-sm md:text-lg font-medium text-gray-700 ">Email:</label>
                         <p class="text-sm md:text-lg font-semibold font-mono tracking-tighter md:tracking-tight">
-                          {flag2 ? partner[0].email : "N/A"}
+                          {flag ? partner[0].email : "N/A"}
                         </p>
                       </div>
                       <div>

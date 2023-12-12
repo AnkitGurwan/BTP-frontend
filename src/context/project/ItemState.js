@@ -210,7 +210,10 @@ const ItemState=(props)=>{
             }
         });
         const json = await response.json();
-        return response.status;
+        var array = [];
+        array.push(response.status);
+        array.push(json.id);
+        return array;
     }
 
     const logout=async()=>{

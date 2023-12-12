@@ -145,6 +145,8 @@ const AuthState = (props) => {
         }
 
       const studentDetails = async()=>{
+        alert('hi')
+        alert(process.env.REACT_APP_BACKEND_URL)
         window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/microsoft`;
     }
 
@@ -162,6 +164,7 @@ const AuthState = (props) => {
         localStorage.setItem('studId',json.studInformation.mail);
         localStorage.setItem('studRoll',json.studInformation.surname);
         localStorage.setItem('studJob',json.studInformation.jobTitle);
+        console.log("json",json)
         localStorage.setItem('accessToken',json.accessToken);
     }
     
