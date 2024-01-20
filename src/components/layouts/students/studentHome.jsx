@@ -83,7 +83,7 @@ const Createaccount = (req, res) => {
     const accessToken = localStorage.getItem('accessToken');
     // alert(accessToken)
     const x = await checkRegisteredFunc(accessToken);
-    console.log("x",x)
+    // console.log("x",x)
 
     if (x[0] === 200) {
       setCount(x[1]);

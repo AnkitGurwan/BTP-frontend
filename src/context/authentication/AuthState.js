@@ -145,8 +145,6 @@ const AuthState = (props) => {
         }
 
       const studentDetails = async()=>{
-        alert('hi')
-        alert(process.env.REACT_APP_BACKEND_URL)
         window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/microsoft`;
     }
 
