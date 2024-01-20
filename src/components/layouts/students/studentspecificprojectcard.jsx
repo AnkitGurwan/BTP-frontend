@@ -22,14 +22,18 @@ const Projectcard = () =>{
     const id=params.id;
 
     const project=items.filter((project)=>project._id===id).map((project,i)=>{return project});
+    console.log("aojdoajda",project[0].intrestedPeople)
 
 
     //check if user has registered for the project or not
    const user=localStorage.getItem('studId');
 
-
-    const checker =()=>{
-      project[0].intrestedPeople.map((emailcheck)=>{setStudentRegisteredCount(studentRegisteredCount+1);if(emailcheck===user)setIsRegistered(1);});
+    const checker = () => 
+    {
+      console.log(project)
+      console.log(project[0])
+      console.log(project[0].intrestedPeople)
+      if(project[0].intrestedPeople)project[0].intrestedPeople.map((emailcheck)=>{setStudentRegisteredCount(studentRegisteredCount+1);if(emailcheck===user)setIsRegistered(1);});
       setLoading(false);
     }
     

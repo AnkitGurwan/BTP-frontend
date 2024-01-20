@@ -14,8 +14,8 @@ const ItemState=(props)=>{
     const [single,setSingle]=useState([]);
     const projectsAll = useSelector(state => state.allProjects.specificProjects);
 
-    const url = process.env.REACT_APP_BACKEND_URL;
-    // const url = 'http://localhost:5000';
+    // const url = process.env.REACT_APP_BACKEND_URL;
+    const url = 'http://localhost:5000';
     const dispatch = useDispatch();
 
     

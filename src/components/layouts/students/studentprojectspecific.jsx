@@ -83,7 +83,7 @@ const Specificprojectcard=()=> {
             </div>
             
             <div className="flex flex-col md:flex-row">
-              <div className='flex w-full justify-center md:pl-16 my-2'>{items.filter((project)=>project._id === id).map((projects,i)=>{return (<Projectcardspecific key={i} project={projects} idtoken={idtoken}/>)})}</div>
+              <div className='flex w-full justify-center md:pl-16 my-1 md:my-2'>{items.filter((project)=>project._id === id).map((projects,i)=>{return (<Projectcardspecific key={i} project={projects} idtoken={idtoken}/>)})}</div>
 
               <div className="md:w-1/4 flex flex-col items-center border-2 rounded-lg my-2 mx-2 md:ml-4 py-2">
                 <div>

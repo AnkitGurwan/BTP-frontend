@@ -69,9 +69,11 @@ const Createaccount = (req, res) => {
   
   const userName = localStorage.getItem('studName');
   const userId = localStorage.getItem('studId');
+  
 
   const getItem = async () => {
     const code = searchParams.get('code');
+    
 
     await allProjects();
 

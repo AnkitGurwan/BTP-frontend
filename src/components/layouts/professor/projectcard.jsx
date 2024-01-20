@@ -7,9 +7,9 @@ const Projectcard = (props) => {
     const idtoken=props.idtoken;
    
     return(
-    <div className='mx-auto projectcardmaindiv' style={{'fontFamily':'Raleway'}}>
+    <div className='mx-auto' style={{'fontFamily':'Raleway'}}>
         
-            <div class="border-2 rounded-lg bg-gray-100">
+            <div class="border-2 projectcardmaindiv rounded-lg bg-gray-100">
             <div class="card-body  text-center py-3 w-full ">
                 <div class="px-2 break-words text-sm font-semibold md:text-lg tracking-normal leading-4 md:leading-5">{project.title.slice(0,40)}...</div>
                 <hr/>
